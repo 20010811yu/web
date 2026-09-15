@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import PageHero from '../components/PageHero.vue'
 import { products } from '../data'
@@ -18,8 +18,11 @@ const advantages = () => {
 // 双语值取值：字符串原样，对象按当前语言
 const tv = (v) => (typeof v === 'string' ? v : v[locale.value])
 const paramLabelOf = (k) => (paramLabels[k] ? paramLabels[k][locale.value] : k)
-// 当前产品的型号参数列表
+// 当前产品的型号列表与选中型号（切换产品线时重置为第一个型号）
 const models = computed(() => productParams[activeId.value] || [])
+const activeModel = ref(0)
+watch(activeId, () => { activeModel.value = 0 })
+const currentModel = computed(() => models.value[activeModel.value])
 const modelLabel = (m) => (typeof m.name === 'string' ? `${m.name}（${tv(m.sub)}）` : `${tv(m.name)}`)
 </script>
 
@@ -65,9 +68,18 @@ const modelLabel = (m) => (typeof m.name === 'string' ? `${m.name}（${tv(m.sub)
             </ul>
 
             <h3 class="sub">{{ t('products.params') }}</h3>
-            <div v-for="m in models" :key="modelLabel(m)" class="model-block">
-              <h4>{{ modelLabel(m) }}</h4>
-              <el-table :data="m.rows" class="params-table" size="small">
+            <div v-if="models.length > 1" class="model-tabs">
+              <button
+                v-for="(m, i) in models"
+                :key="modelLabel(m)"
+                type="button"
+                class="model-tab"
+                :class="{ active: activeModel === i }"
+                @click="activeModel = i"
+              >{{ modelLabel(m) }}</button>
+            </div>
+            <div v-if="currentModel" class="model-block">
+              <el-table :data="currentModel.rows" class="params-table" size="small">
                 <el-table-column width="45%">
                   <template #default="{ row }">{{ paramLabelOf(row.k) }}</template>
                 </el-table-column>
@@ -156,6 +168,28 @@ const modelLabel = (m) => (typeof m.name === 'string' ? `${m.name}（${tv(m.sub)
   background: var(--color-primary);
 }
 .params-table { margin-bottom: var(--space-5); }
+.model-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.model-tab {
+  background: transparent;
+  border: 1px solid var(--color-line);
+  color: var(--color-text-dim);
+  font-size: var(--font-sm);
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.model-tab:hover { color: var(--color-text); border-color: var(--color-primary); }
+.model-tab.active {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: rgba(0, 168, 120, 0.08);
+}
 .inquire-btn {
   display: inline-block;
   color: #04120c;
