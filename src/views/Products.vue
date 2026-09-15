@@ -100,11 +100,16 @@ const advantages = () => {
 .product-scene {
   border-radius: var(--radius-sm);
   overflow: hidden;
-  margin-bottom: var(--space-5);
-  aspect-ratio: 21 / 8;
-  background: linear-gradient(135deg, var(--bg-2), var(--bg-0));
+  margin: 0 auto var(--space-5);
+  aspect-ratio: 3 / 2;
+  max-width: 48.5rem; /* 870px @18px root：不超过图片原生尺寸，避免拉伸发虚 */
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(40rem 14rem at 70% -20%, rgba(0, 168, 120, 0.08), transparent),
+    var(--bg-2);
 }
-.product-scene img { width: 100%; height: 100%; object-fit: cover; }
+.product-scene img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
 .scene-placeholder {
   display: grid;
   place-items: center;

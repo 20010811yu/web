@@ -7,14 +7,14 @@
 **工作重点**：寅铠官网改版 S2–S6 已完成首轮全量实现并通过构建验证。
 
 **最近变更**：
-- 产品图高清化：发现产品详情页共 13 张图（全部源分辨率 435x288，无更大原图）；用 jimp 做 2x bicubic 放大+卷积锐化 → 870x576，覆盖 public/images/products/（文件名不变原位替换，yk3e-line 删除、新增 yk3e-palletizer 与 yk6-line-alt）
-- 首页"产品与服务"三卡片接入真实设备图（businessImages：line→yk6-line-alt / palletizing→ykal-loader / vision→ykol-vision），卡片顶部图 + 图标标题行，hover 图片微缩放
-- build 通过
+- 产品图清晰化（二次修复后定稿）：2x bicubic + 标准温和锐化核（中心5），并加亮度统计自动验证（上次毁图原因是自创卷积核参数错误）；Products 详情页图片限宽 48.5rem（=图片原生 870px），不再拉伸发虚
+- 产品图高清化：产品详情页共 13 张源图（435x288），jimp 增强至 870x576；首页业务三卡接入真实设备图（businessImages）
+- 伙伴 logo 恒彩色、网格 minmax 修复、全站字体 +12.5%、用户 logo+全称、浅色主题（Hero/CTA 深色锚点）
 
 **下一步**：
 1. 视觉走查（用户在内置浏览器确认）
 2. yk3e/yk-bending 产品对应关系确认（TODO）
-3. 产品参数真实数据、伙伴名单（待用户提供）
+3. 产品参数真实数据、伙伴名单（待用户提供）；如需真正超分可接 AI 超分 API（需密钥）
 
 **关键决策**：
 - 弹性布局：rem 基准 + clamp 视口联动 + EP 尺寸变量 rem 化；≤768px 根字号走 clamp 下限 12px
