@@ -7,7 +7,7 @@ const LOCALE_KEY = 'yinkai-locale'
 function loadLocale() {
   const saved = localStorage.getItem(LOCALE_KEY)
   if (saved === 'zh' || saved === 'en') return saved
-  return navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en'
+  return 'zh' // 默认中文；用户手动切换后经 localStorage 记忆
 }
 
 const i18n = createI18n({
