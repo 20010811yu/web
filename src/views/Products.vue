@@ -1,18 +1,26 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import PageHero from '../components/PageHero.vue'
 import { products } from '../data'
+import { productParams, L as paramLabels } from '../data/params'
 import { ElMessage } from 'element-plus'
 import 'element-plus/es/components/message/style/css'
 
-const { t, tm, rt } = useI18n()
+const { t, tm, rt, locale } = useI18n()
 const activeId = ref(products[0].id)
 const active = () => products.find((p) => p.id === activeId.value)
 const advantages = () => {
   const msgs = tm(`products.items.${activeId.value}.advantages`)
   return Array.isArray(msgs) ? msgs.map(rt) : [String(msgs)]
 }
+
+// 双语值取值：字符串原样，对象按当前语言
+const tv = (v) => (typeof v === 'string' ? v : v[locale.value])
+const paramLabelOf = (k) => (paramLabels[k] ? paramLabels[k][locale.value] : k)
+// 当前产品的型号参数列表
+const models = computed(() => productParams[activeId.value] || [])
+const modelLabel = (m) => (typeof m.name === 'string' ? `${m.name}（${tv(m.sub)}）` : `${tv(m.name)}`)
 </script>
 
 <template>
@@ -57,9 +65,17 @@ const advantages = () => {
             </ul>
 
             <h3 class="sub">{{ t('products.params') }}</h3>
-            <el-table :data="[{ k: t('products.todo') }]" class="params-table">
-              <el-table-column prop="k" />
-            </el-table>
+            <div v-for="m in models" :key="modelLabel(m)" class="model-block">
+              <h4>{{ modelLabel(m) }}</h4>
+              <el-table :data="m.rows" class="params-table" size="small">
+                <el-table-column width="45%">
+                  <template #default="{ row }">{{ paramLabelOf(row.k) }}</template>
+                </el-table-column>
+                <el-table-column>
+                  <template #default="{ row }">{{ tv(row.v) }}</template>
+                </el-table-column>
+              </el-table>
+            </div>
 
             <RouterLink to="/contact" class="inquire-btn">
               {{ t('products.inquire') }} →
