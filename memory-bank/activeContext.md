@@ -7,16 +7,15 @@
 **工作重点**：寅铠官网改版 S2–S6 已完成首轮全量实现并通过构建验证。
 
 **最近变更**：
-- S2 脚手架：手写 Vite 工程，依赖 vue3.5 / router4.4 / vue-i18n9.14 / element-plus2.8 / unplugin-vue-components
-- S3 基础：弹性缩放（root clamp + 全站 rem + EP 尺寸变量 rem 化）、深色 design tokens、NavBar/Footer/PageHero、中英 i18n 全量语言包
-- S4 数据：products/history/news/jobs/partners 双语数据（内容取自旧站，partner 仅有 logo 直链，产品参数为 TODO 占位）
-- S5 页面：Home/Products/About/News/NewsDetail/Contact/Careers 全部实现
-- S6 验证：`npm run build` 通过；preview 下 7 条路由全部 200
+- 提取旧站 32 张图片到 public/images/（6 产品设备图/2 新闻图/20 伙伴 logo/关于配图/2 二维码，语义化重命名）
+- 手写 SVG 生成科技风厂房 Hero 背景（public/images/banner/factory-hero.svg，深蓝基调+光伏屋顶+数据流+品牌渐变）
+- 新增 favicon.svg 并接入 index.html（浏览器标签页显示公司图标）
+- Home Hero 接厂房背景+关于板块配图；Footer 加微信/抖音二维码；News 列表加缩略图；产品/伙伴数据全部改本地路径
 
 **下一步**：
-1. 视觉走查（浏览器多宽度截图自查）与真实素材替换
+1. 视觉走查（浏览器多宽度截图自查）与 yk3e/yk-bending 产品对应关系确认（TODO）
 2. 产品参数表真实数据（待用户提供，标 TODO）
-3. 合作伙伴名单与授权 logo（待用户提供）
+3. 合作伙伴名单与授权确认（待用户提供）
 
 **关键决策**：
 - 弹性布局：rem 基准 + clamp 视口联动 + EP 尺寸变量 rem 化；≤768px 根字号走 clamp 下限 12px

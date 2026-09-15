@@ -43,6 +43,16 @@ const year = new Date().getFullYear()
           <li>{{ t('contact.email') }}：lujiacao@yinkaish.com</li>
           <li>{{ t('contact.fax') }}：{{ t('contact.faxValue') }}</li>
         </ul>
+        <div class="qr-row">
+          <figure>
+            <img src="/images/qrcode/wechat.jpg" :alt="t('footer.wechat')" loading="lazy" />
+            <figcaption>{{ t('footer.wechat') }}</figcaption>
+          </figure>
+          <figure>
+            <img src="/images/qrcode/douyin.jpg" :alt="t('footer.douyin')" loading="lazy" />
+            <figcaption>{{ t('footer.douyin') }}</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
 
@@ -86,6 +96,15 @@ h4 {
 .col a:hover { color: var(--color-primary); }
 .dim { color: var(--color-text-dim); font-size: var(--font-sm); }
 .contact-list li { color: var(--color-text-dim); font-size: var(--font-sm); }
+.qr-row { display: flex; gap: var(--space-4); margin-top: var(--space-4); }
+.qr-row figure { text-align: center; margin: 0; }
+.qr-row img {
+  width: 5.5rem; height: 5.5rem;
+  border-radius: var(--radius-sm);
+  background: #fff;
+  padding: 0.25rem;
+}
+.qr-row figcaption { color: var(--color-text-dim); font-size: var(--font-xs); margin-top: var(--space-1); }
 .footer-bottom {
   display: flex;
   justify-content: space-between;

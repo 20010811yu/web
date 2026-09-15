@@ -1,11 +1,11 @@
-// 产品线数据：id 对应 i18n products.items 的 key
+// 产品线数据：id 对应 i18n products.items 的 key；image 为旧站设备图（yk3e/yk-bending 与产品线对应关系 TODO 待确认）
 export const products = [
-  { id: 'ykLine', icon: 'Setting', image: 'http://yinkaiweb.oss-cn-shanghai.aliyuncs.com/images/banner/banner1.jpg' },
-  { id: 'compositeLine', icon: 'Box', image: 'http://yinkaiweb.oss-cn-shanghai.aliyuncs.com/images/banner/banner2.jpg' },
-  { id: 'palletizer', icon: 'Sort', image: '' },
-  { id: 'loader', icon: 'Upload', image: '' },
-  { id: 'vision', icon: 'View', image: '' },
-  { id: 'auto', icon: 'Van', image: '' },
+  { id: 'ykLine', icon: 'Setting', image: '/images/products/yk6-alu-line.png' },
+  { id: 'compositeLine', icon: 'Box', image: '/images/products/ykfc-composite-line.png' },
+  { id: 'palletizer', icon: 'Sort', image: '/images/products/yk3e-line.png' },
+  { id: 'loader', icon: 'Upload', image: '/images/products/ykal-loader.png' },
+  { id: 'vision', icon: 'View', image: '/images/products/ykol-vision.png' },
+  { id: 'auto', icon: 'Van', image: '/images/products/yk-bending-auto.png' },
 ]
 
 // 发展历程：year 为展示键，textKey 对应 i18n history
@@ -35,9 +35,14 @@ export const jobs = [
   { id: 'sales' },
 ]
 
-// 合作伙伴：旧站仅提供 logo 图片，公司名未公开列出，此处用 logo 直链
-// TODO: 待用户提供正式授权的合作商名单后替换
-export const partners = Array.from({ length: 15 }, (_, i) => ({
+// 合作伙伴：旧站仅提供 logo 图片，公司名未公开列出（TODO: 待用户提供正式授权名单后替换）
+export const partners = Array.from({ length: 20 }, (_, i) => ({
   id: i + 1,
-  logo: `http://yinkaiweb.oss-cn-shanghai.aliyuncs.com/images/logo/${17 + i}.png`,
+  logo: `/images/partners/partner-${String(i + 1).padStart(2, '0')}.png`,
 }))
+
+// 新闻配图
+export const newsImages = {
+  n1: '/images/news/n1.png',
+  n2: '/images/news/n2.png',
+}

@@ -11,8 +11,6 @@ const stats = [
   { value: '50', suffix: '+', label: 'hero.stats.cities.label' },
 ]
 
-const certs = ['iso', 'hightech', 'special']
-
 const historyPreview = history.slice(-4)
 </script>
 
@@ -84,14 +82,9 @@ const historyPreview = history.slice(-4)
           <p class="dim summary">{{ t('home.about.summary') }}</p>
           <RouterLink to="/about" class="btn btn-ghost">{{ t('home.about.more') }}</RouterLink>
         </div>
-        <ul class="certs">
-          <li v-for="c in certs" :key="c" class="card cert">
-            <svg viewBox="0 0 24 24" width="1.5em" height="1.5em" fill="none" stroke="currentColor" stroke-width="1.6">
-              <path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.4 7.2 16.9l.9-5.4L4.2 7.7l5.4-.8L12 2z" />
-            </svg>
-            {{ t(`home.about.certs.${c}`) }}
-          </li>
-        </ul>
+        <div class="about-photo card">
+          <img src="/images/about/company.png" :alt="t('home.about.title')" loading="lazy" />
+        </div>
       </div>
     </section>
 
@@ -174,10 +167,14 @@ const historyPreview = history.slice(-4)
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(70rem 28rem at 80% -20%, rgba(0, 196, 140, 0.16), transparent),
-    radial-gradient(55rem 24rem at 10% 110%, rgba(59, 130, 246, 0.12), transparent),
-    linear-gradient(180deg, var(--bg-1), var(--bg-0));
+    url('/images/banner/factory-hero.svg') center / cover no-repeat;
   z-index: -1;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 17, 28, 0.72) 0%, rgba(10, 17, 28, 0.35) 55%, rgba(10, 17, 28, 0.9) 100%);
 }
 .badge {
   display: inline-block;
@@ -223,16 +220,11 @@ const historyPreview = history.slice(-4)
 .about-grid .eyebrow { color: var(--color-primary); font-size: var(--font-sm); letter-spacing: 0.35em; text-transform: uppercase; }
 .about-grid h2 { font-size: var(--font-xl); margin: var(--space-2) 0 var(--space-4); }
 .summary { margin-bottom: var(--space-5); }
-.certs { display: grid; gap: var(--space-4); }
-.cert {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4) var(--space-5);
-  color: var(--color-text);
-  font-size: var(--font-md);
+.about-photo {
+  overflow: hidden;
+  aspect-ratio: 866 / 465;
 }
-.cert svg { color: var(--color-primary); flex-shrink: 0; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; }
 
 .timeline {
   display: grid;

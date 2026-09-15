@@ -1,7 +1,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 import PageHero from '../components/PageHero.vue'
-import { newsList } from '../data'
+import { newsList, newsImages } from '../data'
 
 const { t } = useI18n()
 </script>
@@ -22,6 +22,7 @@ const { t } = useI18n()
               <strong>{{ t(`news.items.${n.id}.date`).slice(8, 10) }}</strong>
               <span>{{ t(`news.items.${n.id}.date`).slice(0, 7) }}</span>
             </div>
+            <img class="thumb" :src="newsImages[n.id]" :alt="t(`news.items.${n.id}.title`)" loading="lazy" />
             <div class="body">
               <h2>{{ t(`news.items.${n.id}.title`) }}</h2>
               <p class="dim">{{ t(`news.items.${n.id}.summary`) }}</p>
@@ -55,6 +56,13 @@ const { t } = useI18n()
 }
 .date-box strong { font-size: var(--font-2xl); line-height: 1.1; }
 .date-box span { font-size: var(--font-xs); color: var(--color-text-dim); }
+.thumb {
+  width: 10rem;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
 .body h2 { font-size: var(--font-lg); margin-bottom: var(--space-2); }
 .more { color: var(--color-primary); font-size: var(--font-sm); }
 @media (max-width: 48em) {
