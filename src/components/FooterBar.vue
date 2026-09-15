@@ -11,7 +11,7 @@ const year = new Date().getFullYear()
     <div class="container footer-grid">
       <div class="col brand-col">
         <div class="brand">
-          <span class="brand-mark">YK</span>
+          <img class="brand-logo" src="/images/logo.png" alt="Yinkai logo" loading="lazy" />
           <span class="brand-name">{{ t('footer.company') }}</span>
         </div>
         <p class="dim">{{ t('contact.addressValue') }}</p>
@@ -77,15 +77,8 @@ const year = new Date().getFullYear()
   padding-bottom: var(--space-7);
 }
 .brand { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
-.brand-mark {
-  display: grid; place-items: center;
-  width: 2.5rem; height: 2.5rem;
-  border-radius: var(--radius-sm);
-  font-weight: 800;
-  color: #04120c;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-}
-.brand-name { font-weight: 700; font-size: var(--font-md); }
+.brand-logo { width: 2.75rem; height: 2.75rem; object-fit: contain; flex-shrink: 0; }
+.brand-name { font-weight: 700; font-size: var(--font-md); color: var(--color-text); }
 h4 {
   font-size: var(--font-md);
   margin-bottom: var(--space-4);

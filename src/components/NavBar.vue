@@ -36,8 +36,8 @@ function closeMenu() {
   <header class="navbar">
     <div class="container navbar-inner">
       <RouterLink to="/" class="brand" @click="closeMenu">
-        <span class="brand-mark">YK</span>
-        <span class="brand-name">寅铠精密<br /><small>YINKAI PRECISION</small></span>
+        <img class="brand-logo" src="/images/logo.png" alt="Yinkai logo" />
+        <span class="brand-name">{{ t('footer.company') }}<small>YINKAI PRECISION MACHINERY</small></span>
       </RouterLink>
 
       <nav class="nav-links" aria-label="main">
@@ -84,7 +84,7 @@ function closeMenu() {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10, 17, 28, 0.86);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(0.75rem);
   border-bottom: 1px solid var(--color-line);
 }
@@ -95,22 +95,22 @@ function closeMenu() {
   height: 4.25rem;
   gap: var(--space-4);
 }
-.brand { display: flex; align-items: center; gap: var(--space-3); }
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 2.5rem; height: 2.5rem;
-  border-radius: var(--radius-sm);
-  font-weight: 800;
-  font-size: var(--font-md);
-  color: #04120c;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+.brand { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
+.brand-logo { width: 2.75rem; height: 2.75rem; object-fit: contain; flex-shrink: 0; }
+.brand-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.brand-name { font-weight: 700; font-size: var(--font-md); line-height: 1.3; }
 .brand-name small {
-  font-size: var(--font-xs);
+  display: block;
+  font-size: 0.65rem;
   color: var(--color-text-faint);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   font-weight: 500;
 }
 .nav-links { display: flex; gap: var(--space-5); }
@@ -159,8 +159,7 @@ function closeMenu() {
   padding: var(--space-3) var(--space-5) var(--space-5);
   border-top: 1px solid var(--color-line);
   background: var(--bg-1);
-}
-.mobile-link {
+}.mobile-link {
   padding: var(--space-3) 0;
   font-size: var(--font-lg);
   color: var(--color-text-dim);
