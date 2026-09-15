@@ -1,0 +1,37 @@
+# 系统模式（System Patterns）
+
+> 记忆库「怎么建」。架构、关键技术决策、组件关系、已知陷阱与规避模式。≤210 行。
+
+## 架构概览
+
+```text
+SPA（无 SSR）
+├── main.js ── 创建 app，挂载 router + i18n
+├── App.vue ── 全局布局：Navbar + router-view + Footer
+├── router/ ── 路由表（含 NewsDetail 动态路由 /news/:id）
+├── i18n/ ── vue-i18n 实例；localStorage 持久化；Element Plus locale 联动
+├── data/ ── 结构化占位数据（news / jobs / team），双语字段 { zh, en }
+├── components/ ── Navbar、Footer、NewsCard 等跨页面组件
+└── views/ ── 8 个视图（Home/About/Services/Team/News/NewsDetail/Contact/Careers）
+```
+
+## 关键技术决策
+
+| 决策 | 理由 |
+|------|------|
+| Vue 3 而非 React | 官网内容展示型、重维护成本，Vue 模板直观易接手，Vite/vue-i18n 官方配套成熟 |
+| Element Plus 按需引入 | 组件质量与开发效率，同时控制包体积；禁全量 `app.use(ElementPlus)` |
+| 原生 CSS design tokens | 品牌定制感强、少一层依赖；品牌色通过覆盖 `--el-color-primary` 等变量统一 |
+| 占位数据独立于组件 | 后续替换真实文案不动组件逻辑 |
+
+## 关键实现路径
+
+- **语言切换**：切换函数 → i18n.global.locale 变更 → localStorage 写入 → Element Plus locale（ref 包装 zh-cn/en）同步 → 全站 `$t()` 响应式刷新
+- **数据双语渲染**：组件从 `src/data/` 取数组 → 按 `locale.value` 取字段 `item.title[locale.value]`
+- **主题定制**：`src/assets/styles/` 内覆盖 Element Plus CSS 变量 + 自有 tokens，全局仅此一处
+
+## 已知陷阱与规避模式
+
+（承接 errorlog.md 沉淀的普适教训，当前为空）
+
+- （暂无条目）
