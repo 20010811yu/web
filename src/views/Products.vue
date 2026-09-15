@@ -68,50 +68,23 @@ function selectModel(i) {
           </aside>
 
           <div class="product-detail card">
-            <div class="product-scene">
-              <img
-                v-if="active().image"
-                :src="active().image"
-                :alt="t(`products.items.${activeId}.name`)"
-                loading="lazy"
-              />
-              <div v-else class="scene-placeholder" aria-hidden="true">
-                <span>YINKAI</span>
+            <!-- 型号详情视图：选中型号后整体替换线级概览 -->
+            <template v-if="currentModel">
+              <div class="product-scene">
+                <img
+                  v-if="currentModel.image"
+                  :src="currentModel.image"
+                  :alt="modelLabel(currentModel)"
+                  loading="lazy"
+                />
+                <div v-else class="scene-placeholder" aria-hidden="true"><span>YINKAI</span></div>
               </div>
-            </div>
-
-            <h2>{{ t(`products.items.${activeId}.name`) }}</h2>
-
-            <h3 class="sub">{{ t('products.scene') }}</h3>
-            <p class="dim">{{ t(`products.items.${activeId}.scene`) }}</p>
-
-            <h3 class="sub">{{ t('products.advantages') }}</h3>
-            <ul class="adv-list">
-              <li v-for="(a, i) in advantages()" :key="i">{{ a }}</li>
-            </ul>
-
-            <h3 class="sub">{{ t('products.modelsTitle') }}</h3>
-            <!-- 型号卡片网格 -->
-            <div v-if="activeModelIndex == null" class="model-grid">
-              <button
-                v-for="(m, i) in models"
-                :key="modelLabel(m)"
-                type="button"
-                class="card model-card"
-                @click="selectModel(i)"
-              >
-                <img :src="m.image" :alt="modelLabel(m)" loading="lazy" />
-                <strong>{{ typeof m.name === 'string' ? m.name : tv(m.name) }}</strong>
-                <span v-if="m.sub" class="dim">{{ tv(m.sub) }}</span>
-              </button>
-            </div>
-
-            <!-- 单型号参数详情 -->
-            <div v-else class="model-detail">
               <button type="button" class="back-btn" @click="activeModelIndex = null">
                 ← {{ t('products.backToModels') }}
               </button>
-              <h4 class="model-title">{{ modelLabel(currentModel) }}</h4>
+              <h2>{{ modelLabel(currentModel) }}</h2>
+
+              <h3 class="sub">{{ t('products.params') }}</h3>
               <div v-if="currentModel.rows.length" class="model-block">
                 <el-table :data="currentModel.rows" class="params-table" size="small">
                   <el-table-column width="45%">
@@ -123,7 +96,47 @@ function selectModel(i) {
                 </el-table>
               </div>
               <p v-else class="dim">{{ t('products.todo') }}</p>
-            </div>
+            </template>
+
+            <!-- 产品线概览 + 型号卡片网格 -->
+            <template v-else>
+              <div class="product-scene">
+                <img
+                  v-if="active().image"
+                  :src="active().image"
+                  :alt="t(`products.items.${activeId}.name`)"
+                  loading="lazy"
+                />
+                <div v-else class="scene-placeholder" aria-hidden="true">
+                  <span>YINKAI</span>
+                </div>
+              </div>
+
+              <h2>{{ t(`products.items.${activeId}.name`) }}</h2>
+
+              <h3 class="sub">{{ t('products.scene') }}</h3>
+              <p class="dim">{{ t(`products.items.${activeId}.scene`) }}</p>
+
+              <h3 class="sub">{{ t('products.advantages') }}</h3>
+              <ul class="adv-list">
+                <li v-for="(a, i) in advantages()" :key="i">{{ a }}</li>
+              </ul>
+
+              <h3 class="sub">{{ t('products.modelsTitle') }}</h3>
+              <div class="model-grid">
+                <button
+                  v-for="(m, i) in models"
+                  :key="modelLabel(m)"
+                  type="button"
+                  class="card model-card"
+                  @click="selectModel(i)"
+                >
+                  <img :src="m.image" :alt="modelLabel(m)" loading="lazy" />
+                  <strong>{{ typeof m.name === 'string' ? m.name : tv(m.name) }}</strong>
+                  <span v-if="m.sub" class="dim">{{ tv(m.sub) }}</span>
+                </button>
+              </div>
+            </template>
 
             <RouterLink to="/contact" class="inquire-btn">
               {{ t('products.inquire') }} →
