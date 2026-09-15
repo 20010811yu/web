@@ -22,6 +22,8 @@ SPA（无 SSR）
 | Vue 3 而非 React | 官网内容展示型、重维护成本，Vue 模板直观易接手，Vite/vue-i18n 官方配套成熟 |
 | Element Plus 按需引入 | 组件质量与开发效率，同时控制包体积；禁全量 `app.use(ElementPlus)` |
 | 原生 CSS design tokens | 品牌定制感强、少一层依赖；品牌色通过覆盖 `--el-color-primary` 等变量统一 |
+| 弹性缩放布局 | `html{font-size:clamp(12px,0.833vw,20px)}` 根字号随视口线性缩放；全站尺寸用 rem；EP 尺寸变量（`--el-font-size-base` 等）覆盖为 rem；≤768px 根字号固定值切移动布局。实现窗口缩放时字体/图片/图标/间距等比缩放 |
+| 深色工业科技风 | 石墨黑分层背景 + 能源绿强调色，贴合光伏自动化设备制造定位 |
 | 占位数据独立于组件 | 后续替换真实文案不动组件逻辑 |
 
 ## 关键实现路径
@@ -32,6 +34,6 @@ SPA（无 SSR）
 
 ## 已知陷阱与规避模式
 
-（承接 errorlog.md 沉淀的普适教训，当前为空）
+（承接 errorlog.md 沉淀的普适教训）
 
-- （暂无条目）
+- **数组型 i18n 消息**：vue-i18n 的 `t()` 会把数组消息字符串化；必须用 `tm()` 取原始数组 + `rt()` 渲染单项（见 Products/About/Careers）

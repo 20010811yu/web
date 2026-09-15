@@ -21,11 +21,10 @@
 
 ## 依赖清单
 
-（S2 初始化后填写实际版本）
-
-- vue / vue-router / vue-i18n / element-plus
-- devDeps：vite / @vitejs/plugin-vue / unplugin-vue-components
-- 函数式组件样式：ElMessage 等需确认 ElementPlusResolver importStyle 配置生效
+- vue ^3.5 / vue-router ^4.4 / vue-i18n ^9.14 / element-plus ^2.8 / @element-plus/icons-vue ^2.3
+- devDeps：vite ^5.4 / @vitejs/plugin-vue ^5.2 / unplugin-vue-components ^0.27
+- 函数式组件样式：ElMessage 已按需引入样式（`element-plus/es/components/message/style/css`）
+- Node/npm：本机安装版本可用（build 通过）
 
 ## 关键约束（硬规则，详见 AGENTS.md 第二部分）
 

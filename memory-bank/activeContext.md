@@ -4,21 +4,24 @@
 
 ## 当前焦点（≤30 行）
 
-**工作重点**：搭建项目规则与记忆库、skill 体系；网站代码尚未初始化。
+**工作重点**：寅铠官网改版 S2–S6 已完成首轮全量实现并通过构建验证。
 
 **最近变更**：
-- 2026-09-15 创建 AGENTS.md v1.0（融合 memory-bank v2.1 工作流 + 官网规范，含 Element Plus 按需引入约定）
-- 2026-09-15 初始化 memory-bank/ 7 个核心文件 + archive/
-- 2026-09-15 创建 3 个 skill：company-website-dev / add-page / pre-commit-check
+- S2 脚手架：手写 Vite 工程，依赖 vue3.5 / router4.4 / vue-i18n9.14 / element-plus2.8 / unplugin-vue-components
+- S3 基础：弹性缩放（root clamp + 全站 rem + EP 尺寸变量 rem 化）、深色 design tokens、NavBar/Footer/PageHero、中英 i18n 全量语言包
+- S4 数据：products/history/news/jobs/partners 双语数据（内容取自旧站，partner 仅有 logo 直链，产品参数为 TODO 占位）
+- S5 页面：Home/Products/About/News/NewsDetail/Contact/Careers 全部实现
+- S6 验证：`npm run build` 通过；preview 下 7 条路由全部 200
 
 **下一步**：
-1. S2：`npm create vite` 初始化项目，安装 vue-router / vue-i18n / element-plus / unplugin-vue-components
-2. S3：搭建 i18n、路由、design tokens、Element Plus 主题覆盖、Navbar/Footer
-3. S4：按 data → 公共组件 → 各页面的顺序实现 7 个页面
+1. 视觉走查（浏览器多宽度截图自查）与真实素材替换
+2. 产品参数表真实数据（待用户提供，标 TODO）
+3. 合作伙伴名单与授权 logo（待用户提供）
 
 **关键决策**：
-- UI 框架选型 Element Plus（用户确认），按需引入 + CSS 变量覆盖主题色
-- 不引入 Tailwind/sass，样式用原生 CSS design tokens
+- 弹性布局：rem 基准 + clamp 视口联动 + EP 尺寸变量 rem 化；≤768px 根字号走 clamp 下限 12px
+- 视觉：深色工业科技风，能源绿 #00c48c 主色
+- 数组型 i18n 消息统一用 tm()/rt() 读取（t() 会字符串化）
 
 ## 当前处理中的错误
 
