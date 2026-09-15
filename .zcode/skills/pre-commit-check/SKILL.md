@@ -11,15 +11,16 @@ description: 提交前检查与 Git 收尾（P4+P5）。任何改动交付前使
 
 1. **构建验证**：`npm run build` 必须通过，失败则回到开发流程修复
 2. **规范扫描**：
-   - 硬编码文案：扫描改动文件中的中文字符串，确认都已进 i18n 语言包且中英同步
+   - 硬编码文案：扫描改动文件中的中文字符串，确认都已进 i18n 语言包且中英同步（注释除外）
    - 目录归位：改动文件是否符合 AGENTS.md §9 目录职责
    - Element Plus：确认无全量注册、无 `!important` 硬覆盖、新色值走 CSS 变量
-3. **记忆库逐文件同步检查**：以 `git status` / `git diff` 的实际改动清单为影响范围依据（不凭记忆），对 `memory-bank/` 全部 md 文件逐一判断：
+3. **暂存检查**：确认 .gitignore 存在且生效，`git add -A` 后 `git status --short` 不得出现 node_modules / dist / 日志文件
+4. **记忆库逐文件同步检查**：以 `git status` / `git diff` 的实际改动清单为影响范围依据（不凭记忆），对 `memory-bank/` 全部 md 文件逐一判断：
    - 受影响 → 立即更新（错误详情统一指向 ERR 编号；多文件对同一事实描述必须一致）
    - 不受影响 → 显式记录「无需更新 + 原因」，不允许静默跳过
    - 变更映射：错误相关 → errorlog → systemPatterns → techContext；功能迭代 → activeContext → progress → projectbrief；新依赖 → techContext
-4. **体积红线核对**：被改动的核心文件逐一对账——activeContext ≤150 行、progress ≤80 行、systemPatterns ≤210 行、errorlog 🟢 条目已压缩；超线先「归档到 memory-bank/archive/ 再压缩」，归档是搬移不是删除
-5. **输出检查清单**（写入交付说明，逐文件）：
+5. **体积红线核对**：被改动的核心文件逐一对账——activeContext ≤150 行、progress ≤80 行、systemPatterns ≤210 行、errorlog 🟢 条目已压缩；超线先「归档到 memory-bank/archive/ 再压缩」，归档是搬移不是删除
+6. **输出检查清单**（写入交付说明，逐文件）：
    ```text
    ✅ 已更新：<文件名>（<摘要>）
    ➖ 无需更新：<文件名>（<原因>）

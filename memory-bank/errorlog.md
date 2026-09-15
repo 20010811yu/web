@@ -4,21 +4,17 @@
 
 ## 错误条目
 
-（暂无条目。新条目格式如下）
-
-```markdown
-### ERR-001 <标题>
-- **状态**：🔴
-- **分类**：构建 / 依赖 / 运行时 / 逻辑 / API 误用 / 环境工具链
-- **现象**：
-- **上下文**：
-- **发生时间**：YYYY-MM-DD HH:MM
-- **根本原因**：
-- **解决方式**：
-- **解决时间**：
-- **验证结果**：
-- **教训**：
-```
+### ERR-001 git add -A 误提交 node_modules/dist
+- **状态**：🟢
+- **分类**：环境工具链
+- **现象**：首次实现提交时 67b691b 包含 11971 个 node_modules 文件（12025 files changed）
+- **上下文**：仓库初始化时未创建 .gitignore，pre-commit 直接 `git add -A`
+- **发生时间**：2026-09-15
+- **根本原因**：.gitignore 缺失 + 自动提交流程使用 add -A 无暂存检查
+- **解决方式**：commit 未推送前发现；新增 .gitignore（node_modules/dist/日志）→ `git reset --soft` 回退 → 重新提交 dc6fbe0 并推送，远程无污染
+- **解决时间**：2026-09-15
+- **验证结果**：`git ls-files | grep -c node_modules` = 0；status 干净
+- **教训**：项目脚手架第一步必须先建 .gitignore；pre-commit-check 增加暂存清单检查
 
 ## 防回归清单（编码前必查，完整保留）
 
