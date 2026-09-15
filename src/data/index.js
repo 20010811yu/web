@@ -1,12 +1,20 @@
-// 产品线数据：id 对应 i18n products.items 的 key；image 为旧站设备图（yk3e/yk-bending 与产品线对应关系 TODO 待确认）
+// 产品线数据：id 对应 i18n products.items 的 key；image 为旧站设备图（已 2x 放大+锐化增强，源分辨率 435x288）
+// yk3e 与码垛机、yk-bending 与汽车轻量化的对应关系 TODO 待确认
 export const products = [
   { id: 'ykLine', icon: 'Setting', image: '/images/products/yk6-alu-line.png' },
   { id: 'compositeLine', icon: 'Box', image: '/images/products/ykfc-composite-line.png' },
-  { id: 'palletizer', icon: 'Sort', image: '/images/products/yk3e-line.png' },
+  { id: 'palletizer', icon: 'Sort', image: '/images/products/yk3e-palletizer.png' },
   { id: 'loader', icon: 'Upload', image: '/images/products/ykal-loader.png' },
   { id: 'vision', icon: 'View', image: '/images/products/ykol-vision.png' },
   { id: 'auto', icon: 'Van', image: '/images/products/yk-bending-auto.png' },
 ]
+
+// 首页业务分类卡片的配图
+export const businessImages = {
+  line: '/images/products/yk6-line-alt.png',
+  palletizing: '/images/products/ykal-loader.png',
+  vision: '/images/products/ykol-vision.png',
+}
 
 // 发展历程：year 为展示键，textKey 对应 i18n history
 export const history = [

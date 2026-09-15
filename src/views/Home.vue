@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
-import { products, history, newsList, partners } from '../data'
+import { products, history, newsList, partners, businessImages } from '../data'
 
 const { t } = useI18n()
 
@@ -51,21 +51,26 @@ const historyPreview = history.slice(-4)
             to="/products"
             class="card biz-card"
           >
-            <div class="biz-icon">
-              <svg viewBox="0 0 24 24" width="1.75em" height="1.75em" fill="none" stroke="currentColor" stroke-width="1.5">
-                <template v-if="key === 'line'">
-                  <path d="M3 17h18M5 17V9l4-3 4 3v8M13 17v-6h6v6" />
-                </template>
-                <template v-else-if="key === 'palletizing'">
-                  <path d="M4 20h16M6 20v-5h12v5M8 15v-3h8v3M10 12V9h4v3" />
-                </template>
-                <template v-else>
-                  <circle cx="12" cy="12" r="3.2" />
-                  <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z" />
-                </template>
-              </svg>
+            <div class="biz-photo">
+              <img :src="businessImages[key]" :alt="t(`home.business.items.${key}.name`)" loading="lazy" />
             </div>
-            <h3>{{ t(`home.business.items.${key}.name`) }}</h3>
+            <div class="biz-head">
+              <div class="biz-icon">
+                <svg viewBox="0 0 24 24" width="1.75em" height="1.75em" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <template v-if="key === 'line'">
+                    <path d="M3 17h18M5 17V9l4-3 4 3v8M13 17v-6h6v6" />
+                  </template>
+                  <template v-else-if="key === 'palletizing'">
+                    <path d="M4 20h16M6 20v-5h12v5M8 15v-3h8v3M10 12V9h4v3" />
+                  </template>
+                  <template v-else>
+                    <circle cx="12" cy="12" r="3.2" />
+                    <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z" />
+                  </template>
+                </svg>
+              </div>
+              <h3>{{ t(`home.business.items.${key}.name`) }}</h3>
+            </div>
             <p class="dim">{{ t(`home.business.items.${key}.desc`) }}</p>
             <span class="more">{{ t('home.business.more') }} →</span>
           </RouterLink>
@@ -206,15 +211,25 @@ const historyPreview = history.slice(-4)
 
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5); }
-.biz-card { padding: var(--space-6); }
+.biz-card { padding: var(--space-5); }
+.biz-photo {
+  margin: calc(var(--space-5) * -1) calc(var(--space-5) * -1) var(--space-4);
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.biz-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.biz-card:hover .biz-photo img { transform: scale(1.05); }
+.biz-head { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3); }
+.biz-head .biz-icon { margin-bottom: 0; }
 .biz-icon {
   display: inline-grid;
   place-items: center;
-  width: 3.5rem; height: 3.5rem;
+  width: 3rem; height: 3rem;
   border-radius: var(--radius-sm);
   color: var(--color-primary);
-  background: rgba(0, 196, 140, 0.1);
-  margin-bottom: var(--space-4);
+  background: rgba(0, 168, 120, 0.1);
+  flex-shrink: 0;
 }
 .biz-card h3 { font-size: var(--font-lg); margin-bottom: var(--space-2); }
 .more { color: var(--color-primary); font-size: var(--font-sm); }

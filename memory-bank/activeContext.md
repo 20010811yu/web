@@ -7,14 +7,12 @@
 **工作重点**：寅铠官网改版 S2–S6 已完成首轮全量实现并通过构建验证。
 
 **最近变更**：
-- 合作伙伴栏修复：logo 恒彩色（去 grayscale/opacity），网格改 minmax(0,1fr)+overflow:hidden 修复图片撑破导致的整体偏移
-- 全站字体放大约 12.5%：根字号 clamp(13px, 0.9375vw, 22px)（1920→18px），标题 token 同步上调，弹性缩放保持
-- 品牌调整（用户反馈驱动）：导航栏/Footer 改用用户提供的绿色 logo（public/images/logo.png，实为 PNG 的 Ic.ico）+ 公司全称"上海寅铠精密机械制造有限公司"；favicon 同步替换
-- 配色调亮：全站翻转为浅色主题（#f5f7fa 底/白卡/深灰蓝文字），品牌绿加深为 #00a878 保证浅底对比度；首页 Hero 与 CTA 条保留深色（bg-dark #0d1726）作为视觉锚点，深色区文字固定浅色
-- build 通过，dev server 200
+- 产品图高清化：发现产品详情页共 13 张图（全部源分辨率 435x288，无更大原图）；用 jimp 做 2x bicubic 放大+卷积锐化 → 870x576，覆盖 public/images/products/（文件名不变原位替换，yk3e-line 删除、新增 yk3e-palletizer 与 yk6-line-alt）
+- 首页"产品与服务"三卡片接入真实设备图（businessImages：line→yk6-line-alt / palletizing→ykal-loader / vision→ykol-vision），卡片顶部图 + 图标标题行，hover 图片微缩放
+- build 通过
 
 **下一步**：
-1. 浅色主题视觉走查（用户在内置浏览器确认）
+1. 视觉走查（用户在内置浏览器确认）
 2. yk3e/yk-bending 产品对应关系确认（TODO）
 3. 产品参数真实数据、伙伴名单（待用户提供）
 
