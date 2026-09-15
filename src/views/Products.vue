@@ -17,7 +17,10 @@ const advantages = () => {
 
 // 双语值取值：字符串原样，对象按当前语言
 const tv = (v) => (typeof v === 'string' ? v : v[locale.value])
-const paramLabelOf = (k) => (paramLabels[k] ? paramLabels[k][locale.value] : k)
+const paramLabelOf = (k) => {
+  const label = paramLabels(k)
+  return label ? label[locale.value] : k
+}
 // 当前产品线的型号列表；view: 'grid' 型号卡片 | 'detail' 单型号参数
 const models = computed(() => productParams[activeId.value] || [])
 const activeModelIndex = ref(null)
@@ -87,9 +90,9 @@ function selectModel(i) {
               <h3 class="sub">{{ t('products.params') }}</h3>
               <div v-if="currentModel.rows.length" class="model-block">
                 <el-table :data="currentModel.rows" class="params-table" size="small">
-                  <el-table-column width="45%">
-                    <template #default="{ row }">{{ paramLabelOf(row.k) }}</template>
-                  </el-table-column>
+                <el-table-column width="240">
+                  <template #default="{ row }">{{ paramLabelOf(row.k) }}</template>
+                </el-table-column>
                   <el-table-column>
                     <template #default="{ row }">{{ tv(row.v) }}</template>
                   </el-table-column>
