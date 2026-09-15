@@ -18,12 +18,20 @@ const advantages = () => {
 // 双语值取值：字符串原样，对象按当前语言
 const tv = (v) => (typeof v === 'string' ? v : v[locale.value])
 const paramLabelOf = (k) => (paramLabels[k] ? paramLabels[k][locale.value] : k)
-// 当前产品的型号列表与选中型号（切换产品线时重置为第一个型号）
+// 当前产品线的型号列表；view: 'grid' 型号卡片 | 'detail' 单型号参数
 const models = computed(() => productParams[activeId.value] || [])
-const activeModel = ref(0)
-watch(activeId, () => { activeModel.value = 0 })
-const currentModel = computed(() => models.value[activeModel.value])
+const activeModelIndex = ref(null)
+watch(activeId, () => { activeModelIndex.value = null })
+const currentModel = computed(() => (activeModelIndex.value == null ? null : models.value[activeModelIndex.value]))
 const modelLabel = (m) => (typeof m.name === 'string' ? `${m.name}（${tv(m.sub)}）` : `${tv(m.name)}`)
+
+function selectLine(id) {
+  activeId.value = id
+  activeModelIndex.value = null
+}
+function selectModel(i) {
+  activeModelIndex.value = i
+}
 </script>
 
 <template>
@@ -34,14 +42,29 @@ const modelLabel = (m) => (typeof m.name === 'string' ? `${m.name}（${tv(m.sub)
       <div class="container">
         <div class="product-layout">
           <aside class="product-nav">
-            <button
-              v-for="p in products"
-              :key="p.id"
-              type="button"
-              class="nav-item"
-              :class="{ active: activeId === p.id }"
-              @click="activeId = p.id"
-            >{{ t(`products.items.${p.id}.name`) }}</button>
+            <template v-for="p in products" :key="p.id">
+              <button
+                type="button"
+                class="nav-item"
+                :class="{ active: activeId === p.id }"
+                @click="selectLine(p.id)"
+              >{{ t(`products.items.${p.id}.name`) }}</button>
+              <!-- 展开的型号子菜单：仅当前产品线显示 -->
+              <div v-if="activeId === p.id && models.length" class="sub-list">
+                <button
+                  v-for="(m, i) in models"
+                  :key="modelLabel(m)"
+                  type="button"
+                  class="sub-item"
+                  :class="{ active: activeModelIndex === i }"
+                  @click="selectModel(i)"
+                >
+                  <span class="sub-arrow">›</span>
+                  {{ typeof m.name === 'string' ? m.name : tv(m.name) }}
+                  <small v-if="m.sub">{{ tv(m.sub) }}</small>
+                </button>
+              </div>
+            </template>
           </aside>
 
           <div class="product-detail card">
@@ -67,26 +90,39 @@ const modelLabel = (m) => (typeof m.name === 'string' ? `${m.name}（${tv(m.sub)
               <li v-for="(a, i) in advantages()" :key="i">{{ a }}</li>
             </ul>
 
-            <h3 class="sub">{{ t('products.params') }}</h3>
-            <div v-if="models.length > 1" class="model-tabs">
+            <h3 class="sub">{{ t('products.modelsTitle') }}</h3>
+            <!-- 型号卡片网格 -->
+            <div v-if="activeModelIndex == null" class="model-grid">
               <button
                 v-for="(m, i) in models"
                 :key="modelLabel(m)"
                 type="button"
-                class="model-tab"
-                :class="{ active: activeModel === i }"
-                @click="activeModel = i"
-              >{{ modelLabel(m) }}</button>
+                class="card model-card"
+                @click="selectModel(i)"
+              >
+                <img :src="m.image" :alt="modelLabel(m)" loading="lazy" />
+                <strong>{{ typeof m.name === 'string' ? m.name : tv(m.name) }}</strong>
+                <span v-if="m.sub" class="dim">{{ tv(m.sub) }}</span>
+              </button>
             </div>
-            <div v-if="currentModel" class="model-block">
-              <el-table :data="currentModel.rows" class="params-table" size="small">
-                <el-table-column width="45%">
-                  <template #default="{ row }">{{ paramLabelOf(row.k) }}</template>
-                </el-table-column>
-                <el-table-column>
-                  <template #default="{ row }">{{ tv(row.v) }}</template>
-                </el-table-column>
-              </el-table>
+
+            <!-- 单型号参数详情 -->
+            <div v-else class="model-detail">
+              <button type="button" class="back-btn" @click="activeModelIndex = null">
+                ← {{ t('products.backToModels') }}
+              </button>
+              <h4 class="model-title">{{ modelLabel(currentModel) }}</h4>
+              <div v-if="currentModel.rows.length" class="model-block">
+                <el-table :data="currentModel.rows" class="params-table" size="small">
+                  <el-table-column width="45%">
+                    <template #default="{ row }">{{ paramLabelOf(row.k) }}</template>
+                  </el-table-column>
+                  <el-table-column>
+                    <template #default="{ row }">{{ tv(row.v) }}</template>
+                  </el-table-column>
+                </el-table>
+              </div>
+              <p v-else class="dim">{{ t('products.todo') }}</p>
             </div>
 
             <RouterLink to="/contact" class="inquire-btn">
@@ -168,28 +204,59 @@ const modelLabel = (m) => (typeof m.name === 'string' ? `${m.name}（${tv(m.sub)
   background: var(--color-primary);
 }
 .params-table { margin-bottom: var(--space-5); }
-.model-tabs {
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: var(--space-5);
+}
+.model-card {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   gap: var(--space-2);
+  padding: var(--space-5);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.model-card img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  margin-bottom: var(--space-2);
+}
+.model-card strong { font-size: var(--font-md); color: var(--color-text); }
+.model-card span { font-size: var(--font-sm); }
+.model-detail { margin-top: var(--space-2); }
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: var(--font-md);
+  cursor: pointer;
+  padding: 0;
   margin-bottom: var(--space-4);
 }
-.model-tab {
-  background: transparent;
-  border: 1px solid var(--color-line);
+.model-title { font-size: var(--font-lg); margin-bottom: var(--space-4); color: var(--color-text); }
+.sub-list { display: grid; gap: var(--space-1); margin: calc(var(--space-1) * -1) 0 var(--space-2) var(--space-2); }
+.sub-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: left;
+  background: none;
+  border: none;
   color: var(--color-text-dim);
   font-size: var(--font-sm);
-  padding: 0.4rem 1rem;
-  border-radius: 2rem;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.2s;
 }
-.model-tab:hover { color: var(--color-text); border-color: var(--color-primary); }
-.model-tab.active {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  background: rgba(0, 168, 120, 0.08);
-}
+.sub-item small { color: var(--color-text-faint); font-size: var(--font-xs); }
+.sub-item:hover { color: var(--color-primary); }
+.sub-item.active { color: var(--color-primary); background: rgba(0, 168, 120, 0.08); }
+.sub-arrow { color: var(--color-primary); }
 .inquire-btn {
   display: inline-block;
   color: #04120c;

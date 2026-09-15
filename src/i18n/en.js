@@ -67,6 +67,8 @@ export default {
     subtitle: 'Focused on PV frame automation — end-to-end unmanned solutions',
     inquire: 'Inquire Online',
     params: 'Specifications',
+    modelsTitle: 'Product Models',
+    backToModels: 'Back to models',
     advantages: 'Key Advantages',
     scene: 'Application Scenarios',
     items: {

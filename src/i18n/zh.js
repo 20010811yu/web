@@ -67,6 +67,8 @@ export default {
     subtitle: '聚焦光伏边框自动化，全流程无人化解决方案',
     inquire: '在线询盘',
     params: '技术参数',
+    modelsTitle: '产品型号',
+    backToModels: '返回型号列表',
     advantages: '技术优势',
     scene: '应用场景',
     items: {
