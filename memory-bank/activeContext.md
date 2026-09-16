@@ -4,26 +4,27 @@
 
 ## 当前焦点（≤30 行）
 
-**工作重点**：寅铠官网改版 S2–S6 已完成首轮全量实现并通过构建验证。
+**工作重点**：官网优化包（v0.1.8）：修复部署域名不一致、工程化补齐（ESLint/Prettier/CI）、性能与 SEO 增强。
 
 **最近变更**：
-- **部署改为 Netlify**（GitHub Pages 的 PKCE 登录有缺陷，弃用）：base 回归 /，删 deploy.yml，public/_redirects 做 SPA 回退；CMS backend 改 git-gateway（Netlify Identity 邮箱邀请登录，无需 GitHub OAuth App）
-- **待用户操作**：① Netlify 用 GitHub 登录并导入仓库（build: npm run build，publish: dist）→ 自动部署；② Site configuration → Identity → Enable；③ Identity → Git Gateway → Enable；④ 邀请编辑者邮箱；⑤ 之后 /admin/ 用邮箱密码登录
-- 内容 JSON 化与 imgSrc/tv 助手、CMS 三个集合（news/jobs/site）均已就绪
+- 域名统一为品牌域名 `https://www.yinkaish.com`（sitemap.xml / robots.txt Sitemap 绝对地址 / admin config.yml site_url，弃用 github.io 旧地址）
+- MobileContactBar 硬编码「微信」接入 i18n（新增 footer.wechatLabel 中英 key）
+- 新增独立 404 页（views/NotFound.vue，替换原静默重定向首页）
+- 全站 img 补 width/height（产品 870×576 / 新闻 850×560 / 公司 866×465 / 二维码 92×92 / logo 132×128）防 CLS
+- 删除未引用的 old-banner.webp（304K）；移除 main.css 未加载的 Inter 字体声明
+- 新增 ESLint 10（flat config + eslint-plugin-vue）+ Prettier，`npm run lint` / `npm run format`，清理 4 处未用 import
+- 新增 GitHub Actions CI（.github/workflows/ci.yml：npm ci → lint → build）
+- seo.js 路由切换同步更新 og:title/description/url + canonical + twitter:card；index.html 补 og:url/og:locale/twitter 标签
 
 **下一步**：
-1. 用户启用 Pages + 创建 OAuth App（见 admin/index.html 注释）
-2. Formspree 表单（等 endpoint）；真实素材（案例/手册/新闻/伙伴名单）
-
-**下一步**：
-1. 视觉走查（用户在内置浏览器确认）
-2. 自动锁螺母生产线旧站无参数页（TODO 待用户提供）；YK-7B 设备重量旧站缺失已省略
-3. 伙伴名单与授权确认（待用户提供）
+1. 视觉走查与产品图对应关系确认（yk3e / yk-bending，TODO 待用户）
+2. 产品参数真实数据（待用户）；伙伴名单与授权确认（待用户）
+3. Formspree 表单 endpoint（待用户）
+4. 可选：git 历史瘦身（.git 42MB，曾误提交 node_modules）
 
 **关键决策**：
-- 弹性布局：rem 基准 + clamp 视口联动 + EP 尺寸变量 rem 化；≤768px 根字号走 clamp 下限 12px
-- 视觉：深色工业科技风，能源绿 #00c48c 主色
-- 数组型 i18n 消息统一用 tm()/rt() 读取（t() 会字符串化）
+- 域名基准确定为 www.yinkaish.com（与公司邮箱域名一致；Netlify 分配域名未入档）
+- lint 规则放宽 vue 模板格式类规则（格式交 Prettier，保持现有代码风格不动）
 
 ## 当前处理中的错误
 
@@ -33,4 +34,5 @@
 
 ## 上一焦点概要
 
-- 2026-09-15：完成需求澄清（Vue3 vs React 对比后选定 Vue 3；页面板块全选；中英双语）；经两轮讨论确定引入 Element Plus
+- 2026-09-15：部署切 Netlify（git-gateway 登录），内容 JSON 化，CMS 三集合就绪
+- 2026-09-15：完成需求澄清与首轮全量实现（Vue 3 + Element Plus，中英双语，7 视图）

@@ -15,6 +15,7 @@
 | 2026-09-15 | v0.1.5 | 修复自创锐化核毁图问题（改标准核+亮度验证）；Products 详情图限宽防拉伸 |
 | 2026-09-15 | v0.1.6 | 补充产品参数：旧站 13 型号参数表结构化入 params.js，Products 页按型号渲染双语参数表 |
 | 2026-09-15 | v0.1.7 | 优化包：每路由 SEO、OG/JSON-LD/sitemap/robots、移动端联系栏、返回顶部、v-reveal 动效、新闻上下篇、27 图转 WebP |
+| 2026-09-16 | v0.1.8 | 优化包：域名统一 yinkaish.com、404 页、img 尺寸属性防 CLS、ESLint+Prettier+CI、seo.js 动态 OG/canonical、死资源清理 |
 
 ## 待构建
 

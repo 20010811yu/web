@@ -9,7 +9,7 @@ const routes = [
   { path: '/news/:id', name: 'NewsDetail', component: () => import('../views/NewsDetail.vue') },
   { path: '/contact', name: 'Contact', component: () => import('../views/Contact.vue') },
   { path: '/careers', name: 'Careers', component: () => import('../views/Careers.vue') },
-  { path: '/:pathMatch(.*)*', redirect: '/' },
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('../views/NotFound.vue') },
 ]
 
 const router = createRouter({

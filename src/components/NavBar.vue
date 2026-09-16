@@ -38,7 +38,7 @@ function closeMenu() {
   <header class="navbar">
     <div class="container navbar-inner">
       <RouterLink to="/" class="brand" @click="closeMenu">
-        <img class="brand-logo" :src="imgSrc('images/logo.png')" alt="Yinkai logo" />
+        <img class="brand-logo" :src="imgSrc('images/logo.png')" alt="Yinkai logo" width="132" height="128" />
         <span class="brand-name">{{ t('footer.company') }}<small>YINKAI PRECISION MACHINERY</small></span>
       </RouterLink>
 
@@ -49,7 +49,9 @@ function closeMenu() {
           :to="l.to"
           class="nav-link"
           :class="{ active: isActive(l.to) }"
-        >{{ t(l.key) }}</RouterLink>
+        >
+{{ t(l.key) }}
+</RouterLink>
       </nav>
 
       <div class="nav-actions">
@@ -75,7 +77,9 @@ function closeMenu() {
           class="mobile-link"
           :class="{ active: isActive(l.to) }"
           @click="closeMenu"
-        >{{ t(l.key) }}</RouterLink>
+        >
+{{ t(l.key) }}
+</RouterLink>
       </nav>
     </Transition>
   </header>

@@ -8,7 +8,7 @@ backend:
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
-site_url: "https://20010811yu.github.io/web/"
+site_url: "https://www.yinkaish.com"
 locale: "zh_Hans"
 
 collections:

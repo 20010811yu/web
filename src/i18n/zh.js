@@ -220,9 +220,15 @@ export default {
     products: '产品领域',
     contact: '联系我们',
     wechat: '扫一扫，关注微信',
+    wechatLabel: '微信',
     douyin: '扫一扫，关注抖音',
     icp: '沪ICP备10019662号-2',
     copyright: '© {year} 上海寅铠精密机械制造有限公司 版权所有',
+  },
+  notfound: {
+    title: '页面不存在',
+    hint: '您访问的地址可能已被移动或删除。',
+    backHome: '返回首页',
   },
   common: {
     switchLang: 'English',

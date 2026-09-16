@@ -22,7 +22,9 @@
 ## 依赖清单
 
 - vue ^3.5 / vue-router ^4.4 / vue-i18n ^9.14 / element-plus ^2.8 / @element-plus/icons-vue ^2.3
-- devDeps：vite ^5.4 / @vitejs/plugin-vue ^5.2 / unplugin-vue-components ^0.27
+- devDeps：vite ^5.4 / @vitejs/plugin-vue ^5.2 / unplugin-vue-components ^0.27 / eslint ^10（flat config）+ eslint-plugin-vue ^10 + @eslint/js + globals / prettier ^3
+- 脚本：`npm run lint`（eslint .）、`npm run format`（prettier --write src）；CI：.github/workflows/ci.yml（node 20，npm ci → lint → build）
+- 域名基准：https://www.yinkaish.com（sitemap/robots/admin config/SEO canonical 统一）
 - 函数式组件样式：ElMessage 已按需引入样式（`element-plus/es/components/message/style/css`）
 - Node/npm：本机安装版本可用（build 通过）
 

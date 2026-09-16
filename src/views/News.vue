@@ -23,7 +23,7 @@ const { t } = useI18n()
               <strong>{{ t(`news.items.${n.id}.date`).slice(8, 10) }}</strong>
               <span>{{ t(`news.items.${n.id}.date`).slice(0, 7) }}</span>
             </div>
-            <img class="thumb" :src="imgSrc(n.image)" :alt="t(`news.items.${n.id}.title`)" loading="lazy" />
+            <img class="thumb" :src="imgSrc(n.image)" :alt="t(`news.items.${n.id}.title`)" width="850" height="560" loading="lazy" />
             <div class="body">
               <h2>{{ t(`news.items.${n.id}.title`) }}</h2>
               <p class="dim">{{ t(`news.items.${n.id}.summary`) }}</p>

@@ -220,9 +220,15 @@ export default {
     products: 'Products',
     contact: 'Contact',
     wechat: 'WeChat',
+    wechatLabel: 'WeChat',
     douyin: 'Douyin',
     icp: '沪ICP备10019662号-2',
     copyright: '© {year} Shanghai Yinkai Precision Machinery Manufacturing Co., Ltd. All rights reserved.',
+  },
+  notfound: {
+    title: 'Page Not Found',
+    hint: 'The page you are looking for may have been moved or removed.',
+    backHome: 'Back to Home',
   },
   common: {
     switchLang: '中文',

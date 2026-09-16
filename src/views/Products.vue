@@ -5,8 +5,6 @@ import { useI18n } from 'vue-i18n'
 import PageHero from '../components/PageHero.vue'
 import { products } from '../data'
 import { productParams, L as paramLabels } from '../data/params'
-import { ElMessage } from 'element-plus'
-import 'element-plus/es/components/message/style/css'
 
 const { t, tm, rt, locale } = useI18n()
 const activeId = ref(products[0].id)
@@ -52,7 +50,9 @@ function selectModel(i) {
                 class="nav-item"
                 :class="{ active: activeId === p.id }"
                 @click="selectLine(p.id)"
-              >{{ t(`products.items.${p.id}.name`) }}</button>
+              >
+{{ t(`products.items.${p.id}.name`) }}
+</button>
               <!-- 展开的型号子菜单：仅当前产品线显示 -->
               <div v-if="activeId === p.id && models.length" class="sub-list">
                 <button
@@ -79,6 +79,7 @@ function selectModel(i) {
                   v-if="currentModel.image"
                   :src="imgSrc(currentModel.image)"
                   :alt="modelLabel(currentModel)"
+                  width="870" height="576"
                   loading="lazy"
                 />
                 <div v-else class="scene-placeholder" aria-hidden="true"><span>YINKAI</span></div>
@@ -109,6 +110,7 @@ function selectModel(i) {
                   v-if="active().image"
                   :src="imgSrc(active().image)"
                   :alt="t(`products.items.${activeId}.name`)"
+                  width="870" height="576"
                   loading="lazy"
                 />
                 <div v-else class="scene-placeholder" aria-hidden="true">
@@ -135,7 +137,7 @@ function selectModel(i) {
                   class="card model-card"
                   @click="selectModel(i)"
                 >
-                  <img :src="imgSrc(m.image)" :alt="modelLabel(m)" loading="lazy" />
+                  <img :src="imgSrc(m.image)" :alt="modelLabel(m)" width="870" height="576" loading="lazy" />
                   <strong>{{ typeof m.name === 'string' ? m.name : tv(m.name) }}</strong>
                   <span v-if="m.sub" class="dim">{{ tv(m.sub) }}</span>
                 </button>

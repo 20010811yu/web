@@ -14,7 +14,7 @@ const year = new Date().getFullYear()
     <div class="container footer-grid">
       <div class="col brand-col">
         <div class="brand">
-          <img class="brand-logo" :src="imgSrc('images/logo.png')" alt="Yinkai logo" loading="lazy" />
+          <img class="brand-logo" :src="imgSrc('images/logo.png')" alt="Yinkai logo" width="132" height="128" loading="lazy" />
           <span class="brand-name">{{ tv(site.company) }}</span>
         </div>
         <p class="dim">{{ tv(site.address) }}</p>
@@ -48,11 +48,11 @@ const year = new Date().getFullYear()
         </ul>
         <div class="qr-row">
           <figure>
-            <img :src="imgSrc('images/qrcode/wechat.webp')" :alt="t('footer.wechat')" loading="lazy" />
+            <img :src="imgSrc('images/qrcode/wechat.webp')" :alt="t('footer.wechat')" width="92" height="92" loading="lazy" />
             <figcaption>{{ t('footer.wechat') }}</figcaption>
           </figure>
           <figure>
-            <img :src="imgSrc('images/qrcode/douyin.webp')" :alt="t('footer.douyin')" loading="lazy" />
+            <img :src="imgSrc('images/qrcode/douyin.webp')" :alt="t('footer.douyin')" width="92" height="92" loading="lazy" />
             <figcaption>{{ t('footer.douyin') }}</figcaption>
           </figure>
         </div>

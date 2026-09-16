@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { imgSrc } from '../utils/img'
 
 const { t } = useI18n()
 const showWechat = ref(false)
@@ -20,7 +19,7 @@ const showWechat = ref(false)
         <rect x="4" y="4" width="16" height="16" rx="2" />
         <path d="M4 9h16M9 9v11" />
       </svg>
-      <span>微信</span>
+      <span>{{ t('footer.wechatLabel') }}</span>
     </button>
     <RouterLink class="bar-item inquiry" to="/contact">
       <svg viewBox="0 0 24 24" width="1.3em" height="1.3em" fill="none" stroke="currentColor" stroke-width="1.7">
@@ -32,7 +31,7 @@ const showWechat = ref(false)
     <Teleport to="body">
       <div v-if="showWechat" class="wechat-mask" @click="showWechat = false">
         <div class="wechat-pop" @click.stop>
-          <img :src="'/images/qrcode/wechat.webp'" alt="WeChat" />
+          <img :src="'/images/qrcode/wechat.webp'" alt="WeChat" width="92" height="92" />
           <p>{{ t('footer.wechat') }}</p>
           <button type="button" @click="showWechat = false">✕</button>
         </div>

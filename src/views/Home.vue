@@ -1,7 +1,7 @@
 <script setup>
 import { imgSrc } from '../utils/img'
 import { useI18n } from 'vue-i18n'
-import { products, history, newsList, partners, businessImages } from '../data'
+import { history, newsList, partners, businessImages } from '../data'
 
 const { t } = useI18n()
 
@@ -49,11 +49,11 @@ const historyPreview = history.slice(-4)
           <RouterLink
             v-for="(item, key) in { line: 1, palletizing: 1, vision: 1 }"
             :key="key"
-            to="/products"
-            class="card biz-card" v-reveal
+            v-reveal
+            to="/products" class="card biz-card"
           >
             <div class="biz-photo">
-              <img :src="imgSrc(businessImages[key])" :alt="t(`home.business.items.${key}.name`)" loading="lazy" />
+              <img :src="imgSrc(businessImages[key])" :alt="t(`home.business.items.${key}.name`)" width="870" height="576" loading="lazy" />
             </div>
             <div class="biz-head">
               <div class="biz-icon">
@@ -89,7 +89,7 @@ const historyPreview = history.slice(-4)
           <RouterLink to="/about" class="btn btn-ghost">{{ t('home.about.more') }}</RouterLink>
         </div>
         <div class="about-photo card">
-          <img :src="imgSrc('/images/about/company.webp')" :alt="t('home.about.title')" loading="lazy" />
+          <img :src="imgSrc('/images/about/company.webp')" :alt="t('home.about.title')" width="866" height="465" loading="lazy" />
         </div>
       </div>
     </section>
@@ -103,7 +103,7 @@ const historyPreview = history.slice(-4)
           <div class="bar" />
         </div>
         <div class="timeline">
-          <div v-for="h in historyPreview" :key="h.year" class="timeline-item" v-reveal>
+          <div v-for="h in historyPreview" :key="h.year" v-reveal class="timeline-item">
             <strong>{{ h.year }}</strong>
             <p class="dim">{{ t(`history.${h.textKey}`) }}</p>
           </div>
@@ -124,7 +124,7 @@ const historyPreview = history.slice(-4)
         </div>
         <div class="partner-wall">
           <!-- 旧站 logo 未附公司名，先以 logo 直链展示；无法加载时显示占位 -->
-          <div v-for="p in partners" :key="p.id" class="card partner" v-reveal>
+          <div v-for="p in partners" :key="p.id" v-reveal class="card partner">
             <img :src="imgSrc(p.logo)" :alt="`partner-${p.id}`" loading="lazy" @error="$event.target.style.display = 'none'" />
           </div>
         </div>
@@ -140,7 +140,7 @@ const historyPreview = history.slice(-4)
           <div class="bar" />
         </div>
         <div class="grid-2">
-          <RouterLink v-for="n in newsList" :key="n.id" :to="`/news/${n.id}`" class="card news-card" v-reveal>
+          <RouterLink v-for="n in newsList" :key="n.id" v-reveal :to="`/news/${n.id}`" class="card news-card">
             <time>{{ t(`news.items.${n.id}.date`) }}</time>
             <h3>{{ t(`news.items.${n.id}.title`) }}</h3>
             <p class="dim">{{ t(`news.items.${n.id}.summary`) }}</p>

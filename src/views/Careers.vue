@@ -3,7 +3,6 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import PageHero from '../components/PageHero.vue'
 import { jobs } from '../data'
-import { imgSrc } from '../utils/img'
 import { tv } from '../utils/i18n-value'
 
 const { t, tm, rt } = useI18n()
