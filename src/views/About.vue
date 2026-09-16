@@ -68,7 +68,8 @@ const intro = computed(() => {
 </template>
 
 <style scoped>
-.intro { max-width: 50rem; margin: 0 auto; display: grid; gap: var(--space-4); }
+.intro { max-width: 55rem; margin: 0 auto; display: grid; gap: var(--space-4); }
+.intro p { font-size: 1.25rem; line-height: 1.9; }
 .band { background: var(--bg-1); border-block: 1px solid var(--color-line); }
 .certs {
   display: grid;
@@ -84,7 +85,8 @@ const intro = computed(() => {
 }
 .cert svg { color: var(--color-primary); flex-shrink: 0; }
 .timeline { max-width: 50rem; margin: 0 auto; }
-.timeline p { padding-bottom: var(--space-2); }
+.timeline p { padding-bottom: var(--space-2); font-size: 1.15rem; }
+.timeline :deep(.el-timeline-item__timestamp) { font-size: 1.05rem; font-weight: 600; }
 @media (max-width: 48em) {
   .certs { grid-template-columns: 1fr; }
 }
