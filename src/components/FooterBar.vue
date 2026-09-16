@@ -45,11 +45,11 @@ const year = new Date().getFullYear()
         </ul>
         <div class="qr-row">
           <figure>
-            <img src="/images/qrcode/wechat.jpg" :alt="t('footer.wechat')" loading="lazy" />
+            <img src="/images/qrcode/wechat.webp" :alt="t('footer.wechat')" loading="lazy" />
             <figcaption>{{ t('footer.wechat') }}</figcaption>
           </figure>
           <figure>
-            <img src="/images/qrcode/douyin.jpg" :alt="t('footer.douyin')" loading="lazy" />
+            <img src="/images/qrcode/douyin.webp" :alt="t('footer.douyin')" loading="lazy" />
             <figcaption>{{ t('footer.douyin') }}</figcaption>
           </figure>
         </div>

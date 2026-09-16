@@ -37,7 +37,7 @@ const historyPreview = history.slice(-4)
     </section>
 
     <!-- 产品与服务 -->
-    <section class="block">
+    <section v-reveal class="block">
       <div class="container">
         <div class="section-title">
           <p class="eyebrow">{{ t('home.business.eyebrow') }}</p>
@@ -49,7 +49,7 @@ const historyPreview = history.slice(-4)
             v-for="(item, key) in { line: 1, palletizing: 1, vision: 1 }"
             :key="key"
             to="/products"
-            class="card biz-card"
+            class="card biz-card" v-reveal
           >
             <div class="biz-photo">
               <img :src="businessImages[key]" :alt="t(`home.business.items.${key}.name`)" loading="lazy" />
@@ -79,7 +79,7 @@ const historyPreview = history.slice(-4)
     </section>
 
     <!-- 关于速览 -->
-    <section class="block about-band">
+    <section v-reveal class="block about-band">
       <div class="container about-grid">
         <div>
           <p class="eyebrow">{{ t('home.about.eyebrow') }}</p>
@@ -88,13 +88,13 @@ const historyPreview = history.slice(-4)
           <RouterLink to="/about" class="btn btn-ghost">{{ t('home.about.more') }}</RouterLink>
         </div>
         <div class="about-photo card">
-          <img src="/images/about/company.png" :alt="t('home.about.title')" loading="lazy" />
+          <img src="/images/about/company.webp" :alt="t('home.about.title')" loading="lazy" />
         </div>
       </div>
     </section>
 
     <!-- 发展历程 -->
-    <section class="block">
+    <section v-reveal class="block">
       <div class="container">
         <div class="section-title">
           <p class="eyebrow">{{ t('home.history.eyebrow') }}</p>
@@ -102,7 +102,7 @@ const historyPreview = history.slice(-4)
           <div class="bar" />
         </div>
         <div class="timeline">
-          <div v-for="h in historyPreview" :key="h.year" class="timeline-item">
+          <div v-for="h in historyPreview" :key="h.year" class="timeline-item" v-reveal>
             <strong>{{ h.year }}</strong>
             <p class="dim">{{ t(`history.${h.textKey}`) }}</p>
           </div>
@@ -114,7 +114,7 @@ const historyPreview = history.slice(-4)
     </section>
 
     <!-- 合作伙伴 -->
-    <section class="block">
+    <section v-reveal class="block">
       <div class="container">
         <div class="section-title">
           <p class="eyebrow">{{ t('home.partners.eyebrow') }}</p>
@@ -123,7 +123,7 @@ const historyPreview = history.slice(-4)
         </div>
         <div class="partner-wall">
           <!-- 旧站 logo 未附公司名，先以 logo 直链展示；无法加载时显示占位 -->
-          <div v-for="p in partners" :key="p.id" class="card partner">
+          <div v-for="p in partners" :key="p.id" class="card partner" v-reveal>
             <img :src="p.logo" :alt="`partner-${p.id}`" loading="lazy" @error="$event.target.style.display = 'none'" />
           </div>
         </div>
@@ -131,7 +131,7 @@ const historyPreview = history.slice(-4)
     </section>
 
     <!-- 新闻速览 -->
-    <section class="block">
+    <section v-reveal class="block">
       <div class="container">
         <div class="section-title">
           <p class="eyebrow">{{ t('home.news.eyebrow') }}</p>
@@ -139,7 +139,7 @@ const historyPreview = history.slice(-4)
           <div class="bar" />
         </div>
         <div class="grid-2">
-          <RouterLink v-for="n in newsList" :key="n.id" :to="`/news/${n.id}`" class="card news-card">
+          <RouterLink v-for="n in newsList" :key="n.id" :to="`/news/${n.id}`" class="card news-card" v-reveal>
             <time>{{ t(`news.items.${n.id}.date`) }}</time>
             <h3>{{ t(`news.items.${n.id}.title`) }}</h3>
             <p class="dim">{{ t(`news.items.${n.id}.summary`) }}</p>
@@ -153,7 +153,7 @@ const historyPreview = history.slice(-4)
     </section>
 
     <!-- CTA -->
-    <section class="cta-band">
+    <section v-reveal class="cta-band">
       <div class="container center">
         <h2>{{ t('home.cta.title') }}</h2>
         <RouterLink to="/contact" class="btn btn-primary btn-lg">{{ t('home.cta.button') }}</RouterLink>

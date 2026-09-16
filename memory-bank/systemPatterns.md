@@ -37,3 +37,6 @@ SPA（无 SSR）
 （承接 errorlog.md 沉淀的普适教训）
 
 - **数组型 i18n 消息**：vue-i18n 的 `t()` 会把数组消息字符串化；必须用 `tm()` 取原始数组 + `rt()` 渲染单项（见 Products/About/Careers）
+- **图片格式转换后引用同步**：批量把 public/ 下图片转 WebP 并删原图时，务必同步更新所有引用（.jpg/.png 都要覆盖），否则 Vite build 会因资源解析失败而报错；转换前用「WebP 更小才替换」策略（见 /tmp/imgtool/towebp.js 思路）
+- **el-table-column width 不支持百分比**：`width="45%"` 会被当作 45px；需固定 px 或用 min-width
+- **SEO 模式**：每路由 title/description 集中在 src/seo.js，router afterEach + NavBar 切语言两处调用 applyRouteSeo；动态页（NewsDetail）自行调 applyNewsSeo

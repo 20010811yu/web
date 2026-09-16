@@ -1,19 +1,19 @@
 // 产品线数据：id 对应 i18n products.items 的 key；image 为旧站设备图（已 2x 放大+锐化增强，源分辨率 435x288）
 // yk3e 与码垛机、yk-bending 与汽车轻量化的对应关系 TODO 待确认
 export const products = [
-  { id: 'ykLine', icon: 'Setting', image: '/images/products/yk6-alu-line.png' },
-  { id: 'compositeLine', icon: 'Box', image: '/images/products/ykfc-composite-line.png' },
-  { id: 'palletizer', icon: 'Sort', image: '/images/products/yk3e-palletizer.png' },
-  { id: 'loader', icon: 'Upload', image: '/images/products/ykal-loader.png' },
-  { id: 'vision', icon: 'View', image: '/images/products/ykol-vision.png' },
-  { id: 'auto', icon: 'Van', image: '/images/products/yk-bending-auto.png' },
+  { id: 'ykLine', icon: 'Setting', image: '/images/products/yk6-alu-line.webp' },
+  { id: 'compositeLine', icon: 'Box', image: '/images/products/ykfc-composite-line.webp' },
+  { id: 'palletizer', icon: 'Sort', image: '/images/products/yk3e-palletizer.webp' },
+  { id: 'loader', icon: 'Upload', image: '/images/products/ykal-loader.webp' },
+  { id: 'vision', icon: 'View', image: '/images/products/ykol-vision.webp' },
+  { id: 'auto', icon: 'Van', image: '/images/products/yk-bending-auto.webp' },
 ]
 
 // 首页业务分类卡片的配图
 export const businessImages = {
-  line: '/images/products/yk6-line-alt.png',
-  palletizing: '/images/products/ykal-loader.png',
-  vision: '/images/products/ykol-vision.png',
+  line: '/images/products/yk6-line-alt.webp',
+  palletizing: '/images/products/ykal-loader.webp',
+  vision: '/images/products/ykol-vision.webp',
 }
 
 // 发展历程：year 为展示键，textKey 对应 i18n history
@@ -51,6 +51,6 @@ export const partners = Array.from({ length: 20 }, (_, i) => ({
 
 // 新闻配图
 export const newsImages = {
-  n1: '/images/news/n1.png',
-  n2: '/images/news/n2.png',
+  n1: '/images/news/n1.webp',
+  n2: '/images/news/n2.webp',
 }

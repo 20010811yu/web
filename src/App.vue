@@ -1,6 +1,8 @@
 <script setup>
 import NavBar from './components/NavBar.vue'
 import FooterBar from './components/FooterBar.vue'
+import MobileContactBar from './components/MobileContactBar.vue'
+import BackTop from './components/BackTop.vue'
 </script>
 
 <template>
@@ -9,4 +11,6 @@ import FooterBar from './components/FooterBar.vue'
     <RouterView />
   </main>
   <FooterBar />
+  <MobileContactBar />
+  <BackTop />
 </template>

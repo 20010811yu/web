@@ -53,7 +53,7 @@ const r = (k, v) => ({ k, v })
 export const productParams = {
   ykLine: [
     {
-      image: '/images/products/models/yk-7a.png',
+      image: '/images/products/models/yk-7a.webp',
       name: 'YK-7A',
       sub: { zh: '立冲长边', en: 'Vertical punch, long side' },
       rows: [
@@ -79,7 +79,7 @@ export const productParams = {
       ],
     },
     {
-      image: '/images/products/models/yk-7b.png',
+      image: '/images/products/models/yk-7b.webp',
       name: 'YK-7B',
       sub: { zh: '卧冲短边', en: 'Horizontal punch, short side' },
       rows: [
@@ -104,7 +104,7 @@ export const productParams = {
       ],
     },
     {
-      image: '/images/products/models/yk-7w.png',
+      image: '/images/products/models/yk-7w.webp',
       name: 'YK-7W',
       sub: { zh: '卧冲长边', en: 'Horizontal punch, long side' },
       rows: [
@@ -131,7 +131,7 @@ export const productParams = {
   ],
   compositeLine: [
     {
-      image: '/images/products/models/yk-fc-5c.png',
+      image: '/images/products/models/yk-fc-5c.webp',
       name: 'YK-FC-5C',
       sub: { zh: '长边自动线', en: 'Long-side automatic line' },
       rows: [
@@ -157,7 +157,7 @@ export const productParams = {
       ],
     },
     {
-      image: '/images/products/models/yk-fc-5d.png',
+      image: '/images/products/models/yk-fc-5d.webp',
       name: 'YK-FC-5D',
       sub: { zh: '短边自动线', en: 'Short-side automatic line' },
       rows: [
@@ -181,7 +181,7 @@ export const productParams = {
       ],
     },
     {
-      image: '/images/products/models/yk-fc-5j.png',
+      image: '/images/products/models/yk-fc-5j.webp',
       name: 'YK-FC-5J',
       sub: { zh: '角码装配机', en: 'Corner code assembling machine' },
       rows: [
@@ -202,7 +202,7 @@ export const productParams = {
   ],
   palletizer: [
     {
-      image: '/images/products/models/yk-5e.png',
+      image: '/images/products/models/yk-5e.webp',
       name: 'YK-5E',
       sub: { zh: '长边自动码垛机', en: 'Long-side automatic palletizer' },
       rows: [
@@ -224,7 +224,7 @@ export const productParams = {
       ],
     },
     {
-      image: '/images/products/models/yk-5f.png',
+      image: '/images/products/models/yk-5f.webp',
       name: 'YK-5F',
       sub: { zh: '短边自动码垛机', en: 'Short-side automatic palletizer' },
       rows: [
@@ -248,7 +248,7 @@ export const productParams = {
   ],
   loader: [
     {
-      image: '/images/products/models/yk-al-1.png',
+      image: '/images/products/models/yk-al-1.webp',
       name: 'YK-AL-1',
       sub: { zh: '自动上料机', en: 'Automatic loader' },
       rows: [
@@ -268,7 +268,7 @@ export const productParams = {
   ],
   vision: [
     {
-      image: '/images/products/models/yk-ol-2i.png',
+      image: '/images/products/models/yk-ol-2i.webp',
       name: 'YK-OL-2I',
       sub: { zh: '自动在线视觉检测系统', en: 'Automatic in-line vision inspection' },
       rows: [
@@ -282,7 +282,7 @@ export const productParams = {
       ],
     },
     {
-      image: '/images/products/models/yk-of-3i.png',
+      image: '/images/products/models/yk-of-3i.webp',
       name: 'YK-OF-3I',
       sub: { zh: '离线视觉检测系统', en: 'Off-line vision inspection' },
       rows: [
@@ -298,7 +298,7 @@ export const productParams = {
   ],
   auto: [
     {
-      image: '/images/products/models/bending.png',
+      image: '/images/products/models/bending.webp',
       name: { zh: '型材拉弯机', en: 'Profile bending machine' },
       sub: { zh: '汽车轻量化设备', en: 'Automotive lightweight equipment' },
       rows: [
@@ -318,7 +318,7 @@ export const productParams = {
       ],
     },
     {
-      image: '/images/products/models/nut-line.png',
+      image: '/images/products/models/nut-line.webp',
       name: { zh: '自动锁螺母生产线', en: 'Automatic nut-locking line' },
       sub: { zh: '汽车轻量化设备', en: 'Automotive lightweight equipment' },
       rows: [],

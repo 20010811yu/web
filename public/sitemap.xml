@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: 域名上线后将 localhost 占位替换为真实域名 -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.yinkaish.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.yinkaish.com/products</loc><priority>0.9</priority></url>
+  <url><loc>https://www.yinkaish.com/about</loc><priority>0.8</priority></url>
+  <url><loc>https://www.yinkaish.com/news</loc><priority>0.7</priority></url>
+  <url><loc>https://www.yinkaish.com/news/n1</loc><priority>0.6</priority></url>
+  <url><loc>https://www.yinkaish.com/news/n2</loc><priority>0.6</priority></url>
+  <url><loc>https://www.yinkaish.com/contact</loc><priority>0.7</priority></url>
+  <url><loc>https://www.yinkaish.com/careers</loc><priority>0.6</priority></url>
+</urlset>

@@ -227,5 +227,6 @@ export default {
   common: {
     switchLang: '中文',
     loading: 'Loading…',
+    backTop: 'Back to top',
   },
 }

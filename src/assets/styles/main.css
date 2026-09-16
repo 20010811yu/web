@@ -132,6 +132,17 @@ section.block { padding: var(--space-section) 0; }
 .dark-band { color: #e8eef5; }
 .dark-band .dim { color: #9aa8b8; }
 
+/* v-reveal 滚动进入动效 */
+.reveal {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.revealed { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
 /* 按钮基色随深色主题 */
 .el-button {
   --el-button-text-color: var(--color-text);

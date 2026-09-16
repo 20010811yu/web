@@ -7,9 +7,13 @@
 **工作重点**：寅铠官网改版 S2–S6 已完成首轮全量实现并通过构建验证。
 
 **最近变更**：
-- 产品页重构（参照旧站）：左侧产品导航展开型号子菜单（仅当前线）；右侧改为「型号卡片网格（13 张独立型号图，public/images/products/models/）→ 点击卡片进入单型号参数详情（含返回按钮）」；新增 i18n key products.modelsTitle/backToModels；汽车轻量化线补充"自动锁螺母生产线"卡片（旧站无参数页，rows 空显示 TODO）
-- 产品型号归类与参数补充：params.js 13 型号结构化双语参数，型号注入 image 字段
-- 产品图 2x 增强定稿（bicubic+标准锐化+亮度验证）；详情图限宽防拉伸；首页业务三卡接入真实设备图
+- 网站优化包（参照优秀企业官网）：①SEO 基础——src/seo.js 每路由中英 title/description（router afterEach + NavBar 切语言联动 + NewsDetail 动态页）、index.html 补 description/keywords/OG/Organization JSON-LD、public/sitemap.xml+robots.txt（域名占位 TODO）；②体验——移动端底部悬浮联系栏 MobileContactBar（电话/微信弹码/询盘）、BackTop 返回顶部、v-reveal 滚动进入动效（IntersectionObserver，prefers-reduced-motion 降级）；③细节——新闻上/下篇导航、27 张图转 WebP（总体积约 -70%，jimp 不支持 webp 故用 sharp）、hero 预加载
+- build 通过
+
+**下一步**：
+1. 视觉走查（动效/联系栏在真机的表现）
+2. Formspree 表单（等用户注册 endpoint）；部署（等用户确认平台）
+3. 伙伴名单、锁螺母线参数、新闻增补（待用户提供）
 
 **下一步**：
 1. 视觉走查（用户在内置浏览器确认）

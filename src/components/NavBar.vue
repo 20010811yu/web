@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { setLocale } from '../i18n'
+import { applyRouteSeo } from '../seo'
 
 const { t, locale } = useI18n()
 const route = useRoute()
@@ -24,7 +25,7 @@ function isActive(to) {
 
 function toggleLang() {
   setLocale(locale.value === 'zh' ? 'en' : 'zh')
-  document.title = t('hero.title')
+  applyRouteSeo(route)
 }
 
 function closeMenu() {

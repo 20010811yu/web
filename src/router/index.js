@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { applyRouteSeo } from '../seo'
 
 const routes = [
   { path: '/', name: 'Home', component: () => import('../views/Home.vue') },
@@ -21,3 +22,5 @@ const router = createRouter({
 })
 
 export default router
+
+router.afterEach((to) => applyRouteSeo(to))
