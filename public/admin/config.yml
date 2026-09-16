@@ -5,7 +5,7 @@ backend:
   branch: main
   auth_type: pkce
   # TODO: 替换为你的 GitHub OAuth App Client ID（见 admin/index.html 内说明）
-  app_id: REPLACE_WITH_YOUR_OAUTH_APP_CLIENT_ID
+  app_id: Ov23liGnnoDpeWWP9vzL
 
 # 上传的图片存放目录；public_folder 是编辑器里显示的引用前缀（含 GitHub Pages 子路径）
 media_folder: "public/images/uploads"
