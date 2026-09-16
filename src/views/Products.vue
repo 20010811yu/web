@@ -89,10 +89,10 @@ function selectModel(i) {
 
               <h3 class="sub">{{ t('products.params') }}</h3>
               <div v-if="currentModel.rows.length" class="model-block">
-                <el-table :data="currentModel.rows" class="params-table" size="small">
-                <el-table-column width="240">
-                  <template #default="{ row }">{{ paramLabelOf(row.k) }}</template>
-                </el-table-column>
+                <el-table :data="currentModel.rows" class="params-table">
+                  <el-table-column width="240">
+                    <template #default="{ row }">{{ paramLabelOf(row.k) }}</template>
+                  </el-table-column>
                   <el-table-column>
                     <template #default="{ row }">{{ tv(row.v) }}</template>
                   </el-table-column>
@@ -220,6 +220,9 @@ function selectModel(i) {
   background: var(--color-primary);
 }
 .params-table { margin-bottom: var(--space-5); }
+.params-table :deep(.el-table__cell) { padding: 0.85rem 0; }
+.params-table :deep(.cell) { font-size: 1.1rem; line-height: 1.6; padding: 0 var(--space-4); }
+.params-table :deep(.el-table__cell:first-child .cell) { font-weight: 600; color: var(--color-text); }
 .model-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
