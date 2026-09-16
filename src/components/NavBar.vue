@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { setLocale } from '../i18n'
 import { applyRouteSeo } from '../seo'
+import { imgSrc } from '../utils/img'
 
 const { t, locale } = useI18n()
 const route = useRoute()
@@ -37,7 +38,7 @@ function closeMenu() {
   <header class="navbar">
     <div class="container navbar-inner">
       <RouterLink to="/" class="brand" @click="closeMenu">
-        <img class="brand-logo" src="/images/logo.png" alt="Yinkai logo" />
+        <img class="brand-logo" :src="imgSrc('images/logo.png')" alt="Yinkai logo" />
         <span class="brand-name">{{ t('footer.company') }}<small>YINKAI PRECISION MACHINERY</small></span>
       </RouterLink>
 

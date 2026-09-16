@@ -1,0 +1,119 @@
+# Decap CMS 配置：编辑 src/data/content/ 下的 JSON 内容，保存即提交到 GitHub 并触发自动部署
+backend:
+  name: github
+  repo: 20010811yu/web
+  branch: main
+  auth_type: pkce
+  # TODO: 替换为你的 GitHub OAuth App Client ID（见 admin/index.html 内说明）
+  app_id: REPLACE_WITH_YOUR_OAUTH_APP_CLIENT_ID
+
+# 上传的图片存放目录；public_folder 是编辑器里显示的引用前缀（含 GitHub Pages 子路径）
+media_folder: "public/images/uploads"
+public_folder: "/web/images/uploads"
+
+site_url: "https://20010811yu.github.io/web/"
+locale: "zh_Hans"
+
+collections:
+  - name: "news"
+    label: "企业动态"
+    label_singular: "新闻"
+    files:
+      - name: "news"
+        label: "新闻列表"
+        file: "src/data/content/news.json"
+        fields:
+          - name: "items"
+            label: "新闻条目"
+            widget: "list"
+            fields:
+              - { name: "id", label: "ID（英文小写，如 n3）", widget: "string" }
+              - { name: "date", label: "日期", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - name: "title"
+                label: "标题"
+                widget: "object"
+                fields:
+                  - { name: "zh", label: "标题（中文）", widget: "string" }
+                  - { name: "en", label: "标题（英文）", widget: "string" }
+              - name: "summary"
+                label: "摘要"
+                widget: "object"
+                fields:
+                  - { name: "zh", label: "摘要（中文）", widget: "text" }
+                  - { name: "en", label: "摘要（英文）", widget: "text" }
+              - name: "body"
+                label: "正文段落"
+                widget: "list"
+                fields:
+                  - { name: "zh", label: "段落（中文）", widget: "text" }
+                  - { name: "en", label: "段落（英文）", widget: "text" }
+              - { name: "image", label: "配图", widget: "image", required: false }
+
+  - name: "careers"
+    label: "招贤纳士"
+    files:
+      - name: "jobs"
+        label: "职位列表"
+        file: "src/data/content/jobs.json"
+        fields:
+          - name: "jobs"
+            label: "职位"
+            widget: "list"
+            fields:
+              - { name: "id", label: "ID（英文小写）", widget: "string" }
+              - name: "title"
+                label: "职位名称"
+                widget: "object"
+                fields:
+                  - { name: "zh", label: "中文", widget: "string" }
+                  - { name: "en", label: "英文", widget: "string" }
+              - name: "desc"
+                label: "职位描述"
+                widget: "object"
+                fields:
+                  - { name: "zh", label: "中文", widget: "text" }
+                  - { name: "en", label: "英文", widget: "text" }
+              - name: "reqs"
+                label: "任职要求"
+                widget: "list"
+                fields:
+                  - { name: "zh", label: "中文", widget: "text" }
+                  - { name: "en", label: "英文", widget: "text" }
+
+  - name: "settings"
+    label: "站点设置"
+    files:
+      - name: "site"
+        label: "联系与公司信息"
+        file: "src/data/content/site.json"
+        fields:
+          - name: "company"
+            label: "公司名称"
+            widget: "object"
+            fields:
+              - { name: "zh", label: "中文", widget: "string" }
+              - { name: "en", label: "英文", widget: "string" }
+          - name: "address"
+            label: "公司地址"
+            widget: "object"
+            fields:
+              - { name: "zh", label: "中文", widget: "string" }
+              - { name: "en", label: "英文", widget: "string" }
+          - { name: "tel", label: "联系电话", widget: "string" }
+          - { name: "telMobile1", label: "手机 1", widget: "string", required: false }
+          - { name: "telMobile2", label: "手机 2", widget: "string", required: false }
+          - name: "manager1"
+            label: "联系人 1"
+            widget: "object"
+            fields:
+              - { name: "zh", label: "中文", widget: "string" }
+              - { name: "en", label: "英文", widget: "string" }
+          - name: "manager2"
+            label: "联系人 2"
+            widget: "object"
+            fields:
+              - { name: "zh", label: "中文", widget: "string" }
+              - { name: "en", label: "英文", widget: "string" }
+          - { name: "email", label: "邮箱", widget: "string" }
+          - { name: "fax", label: "传真", widget: "string", required: false }
+          - { name: "icp", label: "ICP 备案号", widget: "string" }

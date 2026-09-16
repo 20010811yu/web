@@ -1,0 +1,48 @@
+{
+  "jobs": [
+    {
+      "id": "mech",
+      "title": { "zh": "机械设计工程师", "en": "Mechanical Design Engineer" },
+      "desc": { "zh": "负责自动化产线整机与核心机构设计，输出设计方案与图纸。", "en": "Design complete lines and core mechanisms of automation equipment; deliver design schemes and drawings." },
+      "reqs": [
+        { "zh": "本科及以上学历，机械设计及相关专业", "en": "Bachelor or above in mechanical design or related" },
+        { "zh": "3 年以上非标自动化设备设计经验", "en": "3+ years of non-standard automation design" },
+        { "zh": "熟练使用 SolidWorks / AutoCAD", "en": "Proficient in SolidWorks / AutoCAD" },
+        { "zh": "有光伏或汽车行业自动化设备经验者优先", "en": "PV or automotive automation experience preferred" }
+      ]
+    },
+    {
+      "id": "elec",
+      "title": { "zh": "电气工程师", "en": "Electrical Engineer" },
+      "desc": { "zh": "负责设备电气系统设计、PLC 程序编写与现场调试。", "en": "Design electrical systems, write PLC programs and commission on site." },
+      "reqs": [
+        { "zh": "本科及以上学历，电气自动化相关专业", "en": "Bachelor or above in electrical automation" },
+        { "zh": "熟悉主流 PLC（西门子/三菱）编程", "en": "Proficient in mainstream PLCs (Siemens / Mitsubishi)" },
+        { "zh": "具备伺服、变频、机器人调试经验", "en": "Experience with servo, VFD and robot commissioning" },
+        { "zh": "能适应短期出差调试", "en": "Able to travel for commissioning" }
+      ]
+    },
+    {
+      "id": "vision",
+      "title": { "zh": "视觉算法工程师", "en": "Vision Algorithm Engineer" },
+      "desc": { "zh": "负责视觉检测系统的算法开发与优化。", "en": "Develop and optimize algorithms for vision inspection systems." },
+      "reqs": [
+        { "zh": "本科及以上学历，计算机/光学/自动化相关专业", "en": "Bachelor or above in CS / optics / automation" },
+        { "zh": "熟悉 Halcon / OpenCV 等视觉库", "en": "Familiar with Halcon / OpenCV" },
+        { "zh": "有缺陷检测项目经验者优先", "en": "Defect detection project experience preferred" },
+        { "zh": "良好的算法优化与工程化能力", "en": "Strong algorithm optimization skills" }
+      ]
+    },
+    {
+      "id": "sales",
+      "title": { "zh": "销售经理", "en": "Sales Manager" },
+      "desc": { "zh": "负责光伏组件客户开发与设备销售，达成销售目标。", "en": "Develop PV module customers and sell equipment to meet sales targets." },
+      "reqs": [
+        { "zh": "大专及以上学历，专业不限", "en": "College degree or above, any major" },
+        { "zh": "有光伏组件行业或设备销售经验者优先", "en": "PV module or equipment sales experience preferred" },
+        { "zh": "优秀的沟通与客户维护能力", "en": "Excellent communication skills" },
+        { "zh": "能适应出差", "en": "Able to travel" }
+      ]
+    }
+  ]
+}

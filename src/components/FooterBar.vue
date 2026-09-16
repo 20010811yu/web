@@ -1,6 +1,9 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 import { products } from '../data'
+import { imgSrc } from '../utils/img'
+import site from '../data/content/site.json'
+import { tv } from '../utils/i18n-value'
 
 const { t } = useI18n()
 const year = new Date().getFullYear()
@@ -11,10 +14,10 @@ const year = new Date().getFullYear()
     <div class="container footer-grid">
       <div class="col brand-col">
         <div class="brand">
-          <img class="brand-logo" src="/images/logo.png" alt="Yinkai logo" loading="lazy" />
-          <span class="brand-name">{{ t('footer.company') }}</span>
+          <img class="brand-logo" :src="imgSrc('images/logo.png')" alt="Yinkai logo" loading="lazy" />
+          <span class="brand-name">{{ tv(site.company) }}</span>
         </div>
-        <p class="dim">{{ t('contact.addressValue') }}</p>
+        <p class="dim">{{ tv(site.address) }}</p>
       </div>
 
       <div class="col">
@@ -39,17 +42,17 @@ const year = new Date().getFullYear()
       <div class="col">
         <h4>{{ t('footer.contact') }}</h4>
         <ul class="contact-list">
-          <li>{{ t('contact.tel') }}：021-69173481</li>
-          <li>{{ t('contact.email') }}：lujiacao@yinkaish.com</li>
-          <li>{{ t('contact.fax') }}：{{ t('contact.faxValue') }}</li>
+          <li>{{ t('contact.tel') }}：{{ site.tel }}</li>
+          <li>{{ t('contact.email') }}：{{ site.email }}</li>
+          <li>{{ t('contact.fax') }}：{{ site.fax }}</li>
         </ul>
         <div class="qr-row">
           <figure>
-            <img src="/images/qrcode/wechat.webp" :alt="t('footer.wechat')" loading="lazy" />
+            <img :src="imgSrc('images/qrcode/wechat.webp')" :alt="t('footer.wechat')" loading="lazy" />
             <figcaption>{{ t('footer.wechat') }}</figcaption>
           </figure>
           <figure>
-            <img src="/images/qrcode/douyin.webp" :alt="t('footer.douyin')" loading="lazy" />
+            <img :src="imgSrc('images/qrcode/douyin.webp')" :alt="t('footer.douyin')" loading="lazy" />
             <figcaption>{{ t('footer.douyin') }}</figcaption>
           </figure>
         </div>
@@ -58,7 +61,7 @@ const year = new Date().getFullYear()
 
     <div class="container footer-bottom">
       <span>{{ t('footer.copyright', { year }) }}</span>
-      <span class="icp">{{ t('footer.icp') }}</span>
+      <span class="icp">{{ site.icp }}</span>
     </div>
   </footer>
 </template>

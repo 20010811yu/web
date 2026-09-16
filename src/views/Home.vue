@@ -1,4 +1,5 @@
 <script setup>
+import { imgSrc } from '../utils/img'
 import { useI18n } from 'vue-i18n'
 import { products, history, newsList, partners, businessImages } from '../data'
 
@@ -52,7 +53,7 @@ const historyPreview = history.slice(-4)
             class="card biz-card" v-reveal
           >
             <div class="biz-photo">
-              <img :src="businessImages[key]" :alt="t(`home.business.items.${key}.name`)" loading="lazy" />
+              <img :src="imgSrc(businessImages[key])" :alt="t(`home.business.items.${key}.name`)" loading="lazy" />
             </div>
             <div class="biz-head">
               <div class="biz-icon">
@@ -88,7 +89,7 @@ const historyPreview = history.slice(-4)
           <RouterLink to="/about" class="btn btn-ghost">{{ t('home.about.more') }}</RouterLink>
         </div>
         <div class="about-photo card">
-          <img src="/images/about/company.webp" :alt="t('home.about.title')" loading="lazy" />
+          <img :src="imgSrc('/images/about/company.webp')" :alt="t('home.about.title')" loading="lazy" />
         </div>
       </div>
     </section>
@@ -124,7 +125,7 @@ const historyPreview = history.slice(-4)
         <div class="partner-wall">
           <!-- 旧站 logo 未附公司名，先以 logo 直链展示；无法加载时显示占位 -->
           <div v-for="p in partners" :key="p.id" class="card partner" v-reveal>
-            <img :src="p.logo" :alt="`partner-${p.id}`" loading="lazy" @error="$event.target.style.display = 'none'" />
+            <img :src="imgSrc(p.logo)" :alt="`partner-${p.id}`" loading="lazy" @error="$event.target.style.display = 'none'" />
           </div>
         </div>
       </div>

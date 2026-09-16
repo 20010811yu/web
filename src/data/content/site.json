@@ -1,0 +1,18 @@
+{
+  "company": {
+    "zh": "上海寅铠精密机械制造有限公司",
+    "en": "Shanghai Yinkai Precision Machinery Manufacturing Co., Ltd."
+  },
+  "address": {
+    "zh": "上海市嘉定区安亭镇园区路567号",
+    "en": "No. 567 Yuanqu Road, Anting Town, Jiading District, Shanghai"
+  },
+  "tel": "021-69173481",
+  "telMobile1": "18621638485",
+  "telMobile2": "15999876867",
+  "manager1": { "zh": "曹经理", "en": "Mr. Cao" },
+  "manager2": { "zh": "朱经理", "en": "Mr. Zhu" },
+  "email": "lujiacao@yinkaish.com",
+  "fax": "+86-021-69173483",
+  "icp": "沪ICP备10019662号-2"
+}

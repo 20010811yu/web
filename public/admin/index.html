@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Content Manager</title>
+</head>
+<body>
+  <!--
+    使用前配置（一次性）：
+    1. GitHub → Settings → Developer settings → OAuth Apps → New OAuth App
+       - Homepage URL:        http://localhost:5173 （或正式域名 https://xxx）
+       - Authorization callback URL: http://localhost:5173/admin/ （或 https://xxx/admin/）
+    2. 把得到的 Client ID 填到下方 config.yml 的 app_id
+    3. 访问 /admin/ 即可用 GitHub 账号登录编辑
+  -->
+  <script src="https://unpkg.com/decap-cms@^3.1.2/dist/decap-cms.js"></script>
+</body>
+</html>

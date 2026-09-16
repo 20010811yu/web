@@ -7,13 +7,14 @@
 **工作重点**：寅铠官网改版 S2–S6 已完成首轮全量实现并通过构建验证。
 
 **最近变更**：
-- 网站优化包（参照优秀企业官网）：①SEO 基础——src/seo.js 每路由中英 title/description（router afterEach + NavBar 切语言联动 + NewsDetail 动态页）、index.html 补 description/keywords/OG/Organization JSON-LD、public/sitemap.xml+robots.txt（域名占位 TODO）；②体验——移动端底部悬浮联系栏 MobileContactBar（电话/微信弹码/询盘）、BackTop 返回顶部、v-reveal 滚动进入动效（IntersectionObserver，prefers-reduced-motion 降级）；③细节——新闻上/下篇导航、27 张图转 WebP（总体积约 -70%，jimp 不支持 webp 故用 sharp）、hero 预加载
-- build 通过
+- **部署配置**：GitHub Actions（.github/workflows/deploy.yml）push main 自动构建发布 GitHub Pages；vite base=/web/；dist/404.html 做 SPA 回退；router history 接 BASE_URL。**待用户手动**：GitHub 仓库 Settings→Pages→Source 选 GitHub Actions
+- **CMS 后台**：Decap CMS 挂在 /admin（public/admin/），可表单编辑新闻/职位/站点联系信息（src/data/content/*.json），保存即提交 GitHub 触发部署。**待用户**：创建 GitHub OAuth App 并把 Client ID 填入 public/admin/config.yml 的 app_id
+- 内容 JSON 化：news/jobs/site 抽到 src/data/content/*.json，组件经 tv() 双语渲染；图片路径统一相对路径 + imgSrc()（src/utils/img.js）补 BASE_URL 前缀；27 图 WebP 后新 uploads 归 CMS
+- dev server 访问路径变更为 localhost:5173/web/
 
 **下一步**：
-1. 视觉走查（动效/联系栏在真机的表现）
-2. Formspree 表单（等用户注册 endpoint）；部署（等用户确认平台）
-3. 伙伴名单、锁螺母线参数、新闻增补（待用户提供）
+1. 用户启用 Pages + 创建 OAuth App（见 admin/index.html 注释）
+2. Formspree 表单（等 endpoint）；真实素材（案例/手册/新闻/伙伴名单）
 
 **下一步**：
 1. 视觉走查（用户在内置浏览器确认）

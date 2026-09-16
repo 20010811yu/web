@@ -4,6 +4,8 @@ import { useI18n } from 'vue-i18n'
 import PageHero from '../components/PageHero.vue'
 import { ElMessage } from 'element-plus'
 import 'element-plus/es/components/message/style/css'
+import site from '../data/content/site.json'
+import { tv } from '../utils/i18n-value'
 
 const { t } = useI18n()
 
@@ -36,13 +38,13 @@ async function submit() {
           <ul>
             <li>
               <strong>{{ t('contact.address') }}</strong>
-              <p class="dim">{{ t('contact.addressValue') }}</p>
+              <p class="dim">{{ tv(site.address) }}</p>
             </li>
             <li>
               <strong>{{ t('contact.tel') }}</strong>
               <p class="dim">021-69173481</p>
-              <p class="dim">{{ t('contact.manager1') }} 18621638485</p>
-              <p class="dim">{{ t('contact.manager2') }} 15999876867</p>
+              <p class="dim">{{ tv(site.manager1) }} {{ site.telMobile1 }}</p>
+              <p class="dim">{{ tv(site.manager2) }} {{ site.telMobile2 }}</p>
             </li>
             <li>
               <strong>{{ t('contact.email') }}</strong>
@@ -50,7 +52,7 @@ async function submit() {
             </li>
             <li>
               <strong>{{ t('contact.fax') }}</strong>
-              <p class="dim">{{ t('contact.faxValue') }}</p>
+              <p class="dim">{{ site.fax }}</p>
             </li>
           </ul>
         </div>

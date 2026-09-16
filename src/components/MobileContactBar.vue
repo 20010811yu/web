@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { imgSrc } from '../utils/img'
 
 const { t } = useI18n()
 const showWechat = ref(false)

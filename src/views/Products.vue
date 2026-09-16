@@ -1,4 +1,5 @@
 <script setup>
+import { imgSrc } from '../utils/img'
 import { ref, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import PageHero from '../components/PageHero.vue'
@@ -76,7 +77,7 @@ function selectModel(i) {
               <div class="product-scene">
                 <img
                   v-if="currentModel.image"
-                  :src="currentModel.image"
+                  :src="imgSrc(currentModel.image)"
                   :alt="modelLabel(currentModel)"
                   loading="lazy"
                 />
@@ -106,7 +107,7 @@ function selectModel(i) {
               <div class="product-scene">
                 <img
                   v-if="active().image"
-                  :src="active().image"
+                  :src="imgSrc(active().image)"
                   :alt="t(`products.items.${activeId}.name`)"
                   loading="lazy"
                 />
@@ -134,7 +135,7 @@ function selectModel(i) {
                   class="card model-card"
                   @click="selectModel(i)"
                 >
-                  <img :src="m.image" :alt="modelLabel(m)" loading="lazy" />
+                  <img :src="imgSrc(m.image)" :alt="modelLabel(m)" loading="lazy" />
                   <strong>{{ typeof m.name === 'string' ? m.name : tv(m.name) }}</strong>
                   <span v-if="m.sub" class="dim">{{ tv(m.sub) }}</span>
                 </button>

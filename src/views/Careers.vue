@@ -3,6 +3,8 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import PageHero from '../components/PageHero.vue'
 import { jobs } from '../data'
+import { imgSrc } from '../utils/img'
+import { tv } from '../utils/i18n-value'
 
 const { t, tm, rt } = useI18n()
 
@@ -13,9 +15,8 @@ const benefitsList = computed(() => {
     : []
 })
 
-function reqs(id) {
-  const msgs = tm(`careers.jobs.${id}.reqs`)
-  return Array.isArray(msgs) ? msgs.map(rt) : [String(msgs)]
+function reqs(job) {
+  return job.reqs.map(tv)
 }
 </script>
 
@@ -47,12 +48,12 @@ function reqs(id) {
         <el-collapse accordion class="jobs">
           <el-collapse-item v-for="j in jobs" :key="j.id" :name="j.id">
             <template #title>
-              <span class="job-title">{{ t(`careers.jobs.${j.id}.title`) }}</span>
+              <span class="job-title">{{ tv(j.title) }}</span>
             </template>
-            <p class="dim">{{ t(`careers.jobs.${j.id}.desc`) }}</p>
+            <p class="dim">{{ tv(j.desc) }}</p>
             <h4>{{ t('careers.reqsTitle') }}</h4>
             <ul class="reqs">
-              <li v-for="(r, i) in reqs(j.id)" :key="i" class="dim">{{ r }}</li>
+              <li v-for="(r, i) in reqs(j)" :key="i" class="dim">{{ r }}</li>
             </ul>
           </el-collapse-item>
         </el-collapse>
