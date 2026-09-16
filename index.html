@@ -39,6 +39,14 @@
   </head>
   <body>
     <div id="app"></div>
+    <!-- Netlify Identity：处理邀请/确认/找回密码等邮件链接（仅处理 #invite_token 等哈希，不显示界面） -->
+    <script src="https://cdn.jsdelivr.net/npm/netlify-identity-widget@1/build/netlify-identity-widget.js"></script>
+    <script>
+      window.netlifyIdentity = window.netlifyIdentity || {}
+      window.netlifyIdentity.on('init', function (err) {
+        if (!err) netlifyIdentity.on('login', function () { document.location.href = '/admin/' })
+      })
+    </script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
