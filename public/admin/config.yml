@@ -1,15 +1,12 @@
 # Decap CMS 配置：编辑 src/data/content/ 下的 JSON 内容，保存即提交到 GitHub 并触发自动部署
+# 登录方式：Netlify Identity（邮箱+密码，在 Netlify 后台 Identity → Invite users 邀请）
 backend:
-  name: github
-  repo: 20010811yu/web
+  name: git-gateway
   branch: main
-  auth_type: pkce
-  # TODO: 替换为你的 GitHub OAuth App Client ID（见 admin/index.html 内说明）
-  app_id: Ov23liGnnoDpeWWP9vzL
 
-# 上传的图片存放目录；public_folder 是编辑器里显示的引用前缀（含 GitHub Pages 子路径）
+# 上传的图片存放目录
 media_folder: "public/images/uploads"
-public_folder: "/web/images/uploads"
+public_folder: "/images/uploads"
 
 site_url: "https://20010811yu.github.io/web/"
 locale: "zh_Hans"

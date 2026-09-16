@@ -22,8 +22,8 @@ SPA（无 SSR）
 | Vue 3 而非 React | 官网内容展示型、重维护成本，Vue 模板直观易接手，Vite/vue-i18n 官方配套成熟 |
 | Element Plus 按需引入 | 组件质量与开发效率，同时控制包体积；禁全量 `app.use(ElementPlus)` |
 | 原生 CSS design tokens | 品牌定制感强、少一层依赖；品牌色通过覆盖 `--el-color-primary` 等变量统一 |
-| 部署 | GitHub Pages（项目页，base=/web/）+ Actions 自动发布；SPA 回退靠 404.html |
-| CMS 后台 | Decap CMS 挂 /admin（public/admin/），PKCE 登录 GitHub；编辑 src/data/content/*.json（news/jobs/site），保存提交即触发部署；产品参数仍由 params.js 维护 |
+| 部署 | **Netlify**（免费，从 GitHub 导入自动构建：`npm run build`，发布目录 `dist`）；根路径部署（base=/）；SPA 回退靠 public/_redirects。CMS 登录依赖 Netlify Identity，故不用 GitHub Pages |
+| CMS 后台 | Decap CMS 挂 /admin（public/admin/），backend **git-gateway**（依赖 Netlify Identity+Git Gateway，邮箱邀请登录）；编辑 src/data/content/*.json（news/jobs/site），保存提交 GitHub → Netlify 自动重新部署；产品参数仍由 params.js 维护。陷阱：github+pkce 后端在部分环境下登录无反应/跳 api.netlify.com 404，故弃用 |
 | 内容 JSON 化 | 高频更新内容（新闻/职位/站点信息）存 src/data/content/*.json，双语字段 {zh,en} 并列；组件用 tv()（utils/i18n-value）渲染；图片路径一律相对路径（不带前导斜杠），经 imgSrc()（utils/img）补 BASE_URL |
 | 弹性缩放布局 | `html{font-size:clamp(12px,0.833vw,20px)}` 根字号随视口线性缩放；全站尺寸用 rem；EP 尺寸变量（`--el-font-size-base` 等）覆盖为 rem；≤768px 根字号固定值切移动布局。实现窗口缩放时字体/图片/图标/间距等比缩放 |
 | 深色区块锚点 | v0.1.2 起全站为浅色主题（#f5f7fa 底/白卡/深灰蓝文字，品牌绿 #00a878）；首页 Hero（厂房 SVG 深色场景）与 CTA 条保留深色底（--bg-dark #0d1726），深色区内文字/按钮固定浅色，不随主题变量翻转 |

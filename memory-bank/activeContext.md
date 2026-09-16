@@ -7,10 +7,9 @@
 **工作重点**：寅铠官网改版 S2–S6 已完成首轮全量实现并通过构建验证。
 
 **最近变更**：
-- **部署配置**：GitHub Actions（.github/workflows/deploy.yml）push main 自动构建发布 GitHub Pages；vite base=/web/；dist/404.html 做 SPA 回退；router history 接 BASE_URL。**待用户手动**：GitHub 仓库 Settings→Pages→Source 选 GitHub Actions
-- **CMS 后台**：Decap CMS 挂在 /admin（public/admin/），可表单编辑新闻/职位/站点联系信息（src/data/content/*.json），保存即提交 GitHub 触发部署。**待用户**：创建 GitHub OAuth App 并把 Client ID 填入 public/admin/config.yml 的 app_id
-- 内容 JSON 化：news/jobs/site 抽到 src/data/content/*.json，组件经 tv() 双语渲染；图片路径统一相对路径 + imgSrc()（src/utils/img.js）补 BASE_URL 前缀；27 图 WebP 后新 uploads 归 CMS
-- dev server 访问路径变更为 localhost:5173/web/
+- **部署改为 Netlify**（GitHub Pages 的 PKCE 登录有缺陷，弃用）：base 回归 /，删 deploy.yml，public/_redirects 做 SPA 回退；CMS backend 改 git-gateway（Netlify Identity 邮箱邀请登录，无需 GitHub OAuth App）
+- **待用户操作**：① Netlify 用 GitHub 登录并导入仓库（build: npm run build，publish: dist）→ 自动部署；② Site configuration → Identity → Enable；③ Identity → Git Gateway → Enable；④ 邀请编辑者邮箱；⑤ 之后 /admin/ 用邮箱密码登录
+- 内容 JSON 化与 imgSrc/tv 助手、CMS 三个集合（news/jobs/site）均已就绪
 
 **下一步**：
 1. 用户启用 Pages + 创建 OAuth App（见 admin/index.html 注释）
