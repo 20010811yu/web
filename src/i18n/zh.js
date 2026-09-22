@@ -211,7 +211,7 @@ export default {
         reqs: ['大专及以上学历，专业不限', '有光伏组件行业或设备销售经验者优先', '优秀的沟通与客户维护能力', '能适应出差'],
       },
     },
-    contactHint: '简历投递：lujiacao@yinkaish.com',
+    contactHint: '简历投递：1033782596@qq.com',
   },
   footer: {
     company: '上海寅铠精密机械制造有限公司',

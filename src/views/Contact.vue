@@ -48,7 +48,7 @@ async function submit() {
             </li>
             <li>
               <strong>{{ t('contact.email') }}</strong>
-              <p class="dim">lujiacao@yinkaish.com</p>
+              <p class="dim">{{ site.email }}</p>
             </li>
             <li>
               <strong>{{ t('contact.fax') }}</strong>

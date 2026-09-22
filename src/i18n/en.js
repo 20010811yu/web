@@ -211,7 +211,7 @@ export default {
         reqs: ['College degree or above, any major', 'PV module or equipment sales experience preferred', 'Excellent communication skills', 'Able to travel'],
       },
     },
-    contactHint: 'Send your resume to: lujiacao@yinkaish.com',
+    contactHint: 'Send your resume to: 1033782596@qq.com',
   },
   footer: {
     company: 'Shanghai Yinkai Precision Machinery Manufacturing Co., Ltd.',
