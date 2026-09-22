@@ -21,9 +21,19 @@ const rules = {
 
 async function submit() {
   await formRef.value.validate()
-  // 前端模拟提交：后续对接后端接口
-  ElMessage.success(t('contact.form.success'))
-  formRef.value.resetFields()
+  // Netlify Forms：提交到当前路径，由 Netlify 接收并转发邮件通知
+  try {
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ 'form-name': 'contact', ...form }).toString(),
+    })
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    ElMessage.success(t('contact.form.success'))
+    formRef.value.resetFields()
+  } catch {
+    ElMessage.error(t('contact.form.error'))
+  }
 }
 </script>
 

@@ -169,6 +169,7 @@ export default {
       message: 'Your message',
       submit: 'Submit',
       success: 'Message submitted! We will contact you soon.',
+      error: 'Submission failed. Please try again later or call us directly.',
       rules: {
         name: 'Please enter your name',
         phone: 'Please enter a valid phone number',

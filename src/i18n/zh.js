@@ -169,6 +169,7 @@ export default {
       message: '留言内容',
       submit: '提交留言',
       success: '留言提交成功，我们会尽快与您联系！',
+      error: '提交失败，请稍后重试或直接来电联系。',
       rules: {
         name: '请输入您的称呼',
         phone: '请输入正确的联系电话',

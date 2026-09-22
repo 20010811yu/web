@@ -27,6 +27,7 @@ SPA（无 SSR）
 | 内容 JSON 化 | 高频更新内容（新闻/职位/站点信息）存 src/data/content/*.json，双语字段 {zh,en} 并列；组件用 tv()（utils/i18n-value）渲染；图片路径一律相对路径（不带前导斜杠），经 imgSrc()（utils/img）补 BASE_URL |
 | 弹性缩放布局 | `html{font-size:clamp(12px,0.833vw,20px)}` 根字号随视口线性缩放；全站尺寸用 rem；EP 尺寸变量（`--el-font-size-base` 等）覆盖为 rem；≤768px 根字号固定值切移动布局。实现窗口缩放时字体/图片/图标/间距等比缩放 |
 | 深色区块锚点 | v0.1.2 起全站为浅色主题（#f5f7fa 底/白卡/深灰蓝文字，品牌绿 #00a878）；首页 Hero（厂房 SVG 深色场景）与 CTA 条保留深色底（--bg-dark #0d1726），深色区内文字/按钮固定浅色，不随主题变量翻转 |
+| 表单收信 | **Netlify Forms**（免费 100 条/月）：SPA 必须在 index.html 放隐藏静态表单供部署时识别，Vue 端 fetch POST URLSearchParams（必带 form-name 字段）到当前路径；honeypot 防垃圾。陷阱：纯 SPA 动态渲染的表单 Netlify 检测不到，静态隐藏表单是唯一正解 |
 | 占位数据独立于组件 | 后续替换真实文案不动组件逻辑 |
 
 ## 关键实现路径

@@ -7,6 +7,8 @@
 **工作重点**：官网优化包（v0.1.8）：修复部署域名不一致、工程化补齐（ESLint/Prettier/CI）、性能与 SEO 增强。
 
 **最近变更**：
+- **联系表单接入 Netlify Forms**：index.html 静态隐藏表单（form-name=contact，含 honeypot）+ Contact.vue fetch POST，失败有双语错误提示；留言记录存 Netlify 后台
+- **待用户操作**：Netlify 控制台 → Forms → contact → Settings → Notifications 填 1033782596@qq.com，之后每条留言自动发邮箱
 - **站内邮箱统一改为 1033782596@qq.com**（site.json / Contact.vue / i18n contactHint / index.html JSON-LD）；Contact.vue 邮箱改为读 site.json（CMS 可编辑）
 - 域名统一为品牌域名 `https://www.yinkaish.com`（sitemap.xml / robots.txt Sitemap 绝对地址 / admin config.yml site_url，弃用 github.io 旧地址）
 - MobileContactBar 硬编码「微信」接入 i18n（新增 footer.wechatLabel 中英 key）

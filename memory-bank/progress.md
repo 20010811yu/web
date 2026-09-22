@@ -16,6 +16,7 @@
 | 2026-09-15 | v0.1.6 | 补充产品参数：旧站 13 型号参数表结构化入 params.js，Products 页按型号渲染双语参数表 |
 | 2026-09-15 | v0.1.7 | 优化包：每路由 SEO、OG/JSON-LD/sitemap/robots、移动端联系栏、返回顶部、v-reveal 动效、新闻上下篇、27 图转 WebP |
 | 2026-09-16 | v0.1.8 | 优化包：域名统一 yinkaish.com、404 页、img 尺寸属性防 CLS、ESLint+Prettier+CI、seo.js 动态 OG/canonical、死资源清理 |
+| 2026-09-22 | v0.1.9 | 站内邮箱改 1033782596@qq.com（5 处，联系页改读 site.json）；联系表单接入 Netlify Forms（静态表单+fetch POST+honeypot） |
 
 ## 待构建
 
